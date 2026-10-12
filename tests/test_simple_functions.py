@@ -51,7 +51,7 @@ class SimpleFunctionTests(unittest.TestCase):
         for steps in [('FT(sin(t^2),t,w)','pi/I*(delta(w-1)-delta(w+1))'),('ZT(sin(pi*n/2),n,z)','z/(z^2+1); ROC: abs(z)>1')]:
             self.assertNotEqual(verify(list(steps))['status'],'correct')
     def test_concrete_bank_matches_authored_labels_and_has_no_duplicate_chains(self):
-        rows=json.loads((ROOT/'data/practice.json').read_text())['cases']
+        rows=json.loads((ROOT/'data/practice.json').read_text(encoding='utf-8'))['cases']
         self.assertEqual(len(rows),100)
         self.assertEqual(sum(c['expected']=='correct' for c in rows),50)
         self.assertEqual(len({tuple(c['steps']) for c in rows}),100)
@@ -62,7 +62,7 @@ class SimpleFunctionTests(unittest.TestCase):
                 self.assertEqual(r['firstError'],c['expectedFirstError'])
                 self.assertEqual([v['localStatus'] for v in r['steps']],c['expectedLocalStatuses'])
     def test_question_bank_matches_canonical_inputs(self):
-        bank=json.loads((ROOT/'data/question-bank.json').read_text())
+        bank=json.loads((ROOT/'data/question-bank.json').read_text(encoding='utf-8'))
         self.assertEqual(len(bank['cases']),200)
         self.assertEqual(len({(tuple(c['steps']),json.dumps(c['context'],sort_keys=True)) for c in bank['cases']}),200)
         for file,digest in bank['sourceHashes'].items():self.assertEqual(hashlib.sha256((ROOT/file).read_bytes()).hexdigest(),digest)

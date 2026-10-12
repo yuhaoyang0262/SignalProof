@@ -96,6 +96,14 @@
       "correctiveIteration": "真实浏览器按手动点击验证的实际流程检查；首页桌面与390px手机截图确认页脚删除且无横向溢出。",
       "evidence": "50项Python回归全部通过；1150项严格LaTeX渲染通过；题库DOM适配器测试通过；根目录JavaScript语法与HTML资源路径检查通过；真实Chrome Worker初始化成功，Fourier案例首错第2行，应用建议复核后首错推进至第3行，符合仅修正当前行的语义；公式正常显示，200题题库载入，题库390px布局无横向溢出，无pageerror；CLI Z变换验证通过。已检查暂存文件，无本地环境或凭据模式。",
       "remaining": "本轮未修改数学核心与题库，不重新计算既有基准；本记录为推送前检查，部署版本与公开资源将在推送后单独验证。"
+    },
+    {
+      "title": "第十三轮 · Windows题库测试编码修复",
+      "date": "2026-10-12",
+      "finding": "首次GitHub Actions中Linux成功，Windows两项题库测试使用系统默认cp1252读取UTF-8中文JSON，产生UnicodeDecodeError。",
+      "change": "两处测试文件读取明确指定UTF-8；保持题目、预期标签及数学引擎不变。",
+      "evidence": "首轮Windows日志明确定位到tests/test_simple_functions.py第54、65行；首页及12项公开资源已与72d8475提交逐字节SHA-256比对一致，Pages部署成功。",
+      "remaining": "修复后重新运行相关测试及远程Linux/Windows检查。"
     }
   ],
   "verified": [
