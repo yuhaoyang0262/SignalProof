@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-05",
+  "bank": {
+    "total": 200,
+    "baseline": 100,
+    "concreteFunctions": 100,
+    "correct": 100,
+    "wrong": 100,
+    "uniqueStepsAndConditions": 200
+  },
+  "rules": 51,
+  "checks": {
+    "pythonRegressionTests": 50,
+    "concreteRegressionRetest": 9,
+    "fullLatexFields": 3037,
+    "fullLatexErrors": 0,
+    "bankAndReferenceLatexFields": 1150,
+    "worker": {
+      "environment": "actual worker.js / Pyodide WASM via Node adapter; not browser UI",
+      "datasetSha256": "af3fb938f14a3daff3fd270278f7de86c6822f4f0bb2f1fb6a10910db3818776",
+      "questions": 200,
+      "passed": 200,
+      "formulas": 428,
+      "rules": 51,
+      "repairs": 3
+    },
+    "interactionAdapter": "Initial render, answer grading, retry, collection, workbench handoff, search, filter reset, selection, batch checking/export, empty state passed; DOM adapter is not a browser."
+  },
+  "browser": {
+    "checked": false,
+    "reason": "Cloud browser opening local preview failed with net::ERR_BLOCKED_BY_CLIENT; no browser screenshot/layout claim."
+  },
+  "changes": [
+    "Removed Fourier animation and navigation; retained common transform reference.",
+    "Added concrete exponential, sine/cosine, step and impulse exercises.",
+    "Added 8 concrete transform rules and guarded step/impulse evidence.",
+    "Fixed nested constant extraction and left-sided Z sign handling.",
+    "Concise question selection and answer flow; answer hidden until submit."
+  ],
+  "sourceHashes": {
+    "data/tests.json": "c57d81e719641e110fd9a60aa58754dc9085ed99b9a6d2864c384a29e703cf86",
+    "data/practice.json": "4dfe5f6d5f7c00e10adc9943b9088f6dfb3f5f3d3f4372a555644fb711db09c3"
+  }
+}

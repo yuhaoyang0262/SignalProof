@@ -1,0 +1,169 @@
+{
+  "errors": [],
+  "renderAudit": {
+    "errors": [],
+    "authored": 139,
+    "rules": 43
+  },
+  "cases": [
+    {
+      "id": "conv",
+      "errors": [],
+      "formulaCount": 4
+    },
+    {
+      "id": "conv-distribute",
+      "errors": [],
+      "formulaCount": 3
+    },
+    {
+      "id": "conv-cascade",
+      "errors": [],
+      "formulaCount": 3
+    },
+    {
+      "id": "conv-derivative",
+      "errors": [],
+      "formulaCount": 3
+    },
+    {
+      "id": "conv-integer",
+      "errors": [],
+      "formulaCount": 2
+    },
+    {
+      "id": "conv-product",
+      "errors": [],
+      "formulaCount": 3
+    },
+    {
+      "id": "ft-shift",
+      "errors": [],
+      "formulaCount": 3
+    },
+    {
+      "id": "ft-scale",
+      "errors": [],
+      "formulaCount": 3
+    },
+    {
+      "id": "multi",
+      "errors": [],
+      "formulaCount": 4
+    },
+    {
+      "id": "unknown",
+      "errors": [],
+      "formulaCount": 2
+    },
+    {
+      "id": "ft-modulation",
+      "errors": [],
+      "formulaCount": 3
+    },
+    {
+      "id": "ft-product",
+      "errors": [],
+      "formulaCount": 3
+    },
+    {
+      "id": "lt-initial",
+      "errors": [],
+      "formulaCount": 4
+    },
+    {
+      "id": "lt-correct",
+      "errors": [],
+      "formulaCount": 3
+    },
+    {
+      "id": "lt-second",
+      "errors": [],
+      "formulaCount": 4
+    },
+    {
+      "id": "lt-delay-condition",
+      "errors": [],
+      "formulaCount": 3
+    },
+    {
+      "id": "lt-time",
+      "errors": [],
+      "formulaCount": 3
+    },
+    {
+      "id": "lt-roc-direction",
+      "errors": [],
+      "formulaCount": 3
+    },
+    {
+      "id": "z-roc",
+      "errors": [],
+      "formulaCount": 2
+    },
+    {
+      "id": "z-left",
+      "errors": [],
+      "formulaCount": 3
+    },
+    {
+      "id": "z-delay",
+      "errors": [],
+      "formulaCount": 3
+    },
+    {
+      "id": "z-reversal",
+      "errors": [],
+      "formulaCount": 3
+    },
+    {
+      "id": "z-exponential",
+      "errors": [],
+      "formulaCount": 3
+    },
+    {
+      "id": "z-index",
+      "errors": [],
+      "formulaCount": 3
+    }
+  ],
+  "tests": {
+    "total": 100,
+    "passed": 100
+  },
+  "responsive": [
+    {
+      "page": "home",
+      "width": 390,
+      "scroll": 390
+    },
+    {
+      "page": "lab",
+      "width": 390,
+      "scroll": 390
+    },
+    {
+      "page": "home",
+      "width": 768,
+      "scroll": 768
+    },
+    {
+      "page": "lab",
+      "width": 768,
+      "scroll": 768
+    }
+  ],
+  "interaction": {
+    "animationAdvances": true,
+    "pauseResume": true,
+    "reducedMotion": true,
+    "formulaFirst": true,
+    "editRecheck": true,
+    "removedNavigation": true,
+    "errors": [],
+    "authoredCopyAudit": []
+  },
+  "pythonTests": {
+    "passed": 32
+  }
+}

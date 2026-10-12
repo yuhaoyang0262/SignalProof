@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-05",
+  "referencePairs": {
+    "fourier": 12,
+    "laplace": 12,
+    "z": 12
+  },
+  "newStrictLatexChecks": 147,
+  "numericAnimationChecks": 87,
+  "existingLatexChecks": 1839,
+  "pythonTests": 41,
+  "workerFixedTests": {
+    "passed": 100,
+    "total": 100,
+    "environment": "Actual worker.js and Pyodide WASM via Node shim"
+  },
+  "canvasChecks": {
+    "desktop": [
+      960,
+      420
+    ],
+    "narrow": [
+      330,
+      300
+    ],
+    "rendering": "Same fourier-draw.js functions using @napi-rs/canvas; not browser screenshots"
+  },
+  "browserChecked": false,
+  "sources": [
+    "https://www.3blue1brown.com/lessons/fourier-transforms/",
+    "https://ocw.mit.edu/courses/res-6-007-signals-and-systems-spring-2011/pages/lecture-notes/"
+  ],
+  "status": "Historical record; Fourier animation removed in the subsequent question-bank revision.",
+  "supersededBy": "question-bank-validation.json"
+}

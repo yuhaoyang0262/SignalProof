@@ -1,0 +1,16 @@
+SignalProof 完整项目 · 公式记法统一修正版
+
+1. 解压整个压缩包，保留 signalproof-formula-fixed 中的所有文件和目录。
+2. 打开终端，进入 signalproof-formula-fixed 文件夹。
+3. 执行：python3 tools/preview.py
+4. 浏览器自动打开本地首页。保持终端运行，Ctrl+C 停止。
+
+macOS：也可运行 start-preview.command；如系统提示权限问题，用上述终端命令即可。
+Windows：使用 python tools/preview.py。
+
+需要 Python 3，无需 pip、Node.js 或 API Key。
+不要直接双击 index.html / lab.html；数学 Worker 需要通过本地 HTTP 运行。
+本包包含完整样式、KaTeX 字体、Pyodide 与数学引擎。
+
+这是本地预览版本，尚未推送或部署。
+提交到原仓库：将本文件夹内容复制到已有的仓库目录，保留原仓库的 .git，检查 git diff 后提交并 push。

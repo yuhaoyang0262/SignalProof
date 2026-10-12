@@ -1,0 +1,5877 @@
+{
+  "generatedAt": "2026-10-02T09:30:26.372764+00:00",
+  "engineVersion": "1.0.0",
+  "sympyVersion": "1.13.3",
+  "pythonVersion": "3.12.14",
+  "engineSha256": "05bcd2c0d214ce436571e8e202af64006695b5a376a4cc784fe3c2b8389e4597",
+  "source": {
+    "sha256": "dbe21f2dd12e9b153a5f626f8ebc05ac0ce5da258b92195f17a9c8ee7f9d29c6",
+    "files": {
+      "engine/__init__.py": "ce86c25dbdb319c19f63a659915fbd4bf58d502a6dcfb03136105655cffc1218",
+      "engine/__main__.py": "e7845150431eefe9440880e3b82b2faea1b10ccdfe05cde426c246fd94975ad1",
+      "engine/diagnostics.py": "4dd81734a0c228d3d06b444bb61fb54c4bbc599a661e196de0ef6cde19b56681",
+      "engine/formatting.py": "aef72a566712a21db058574752a00b4ad936ca024bd6a4f87a3a4fc761570205",
+      "engine/rules.py": "08493d035d65af61694d3fd77901374235aa6d44cffb7b7e94a9f2c1647bd4df",
+      "engine/service.py": "05bcd2c0d214ce436571e8e202af64006695b5a376a4cc784fe3c2b8389e4597",
+      "engine/syntax.py": "36850a6f6e33d52297fd4d6b7942eebafcb302d092f2e53fee717587d7318a1e",
+      "engine/verification.py": "46a924129d11f0169a3f501abf707e27a5e55922ffc408d4cb7e9bd0ccefc298"
+    },
+    "unchangedDuringRun": true
+  },
+  "examplesSha256": "7333874cfdee1defafd7ecc14c80b7acdacc6213664846b7a4c69f9a9bf33505",
+  "runner": "Real engine.service.dispatch in native CPython with SymPy 1.13.3; original expected chain and local-step labels preserved. Not a browser runtime or browser latency test.",
+  "oracleProvenance": "AI-assisted, independently mathematically checked labels fixed before evaluation; no external human review or blind evaluation is claimed.",
+  "total": 24,
+  "passed": 24,
+  "failed": 0,
+  "adjacentSteps": 46,
+  "elapsedMs": 7366.58,
+  "cases": [
+    {
+      "id": "conv",
+      "expected": "wrong",
+      "expectedFirstError": 3,
+      "actual": "wrong",
+      "actualFirstError": 3,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "correct",
+        "wrong",
+        "correct"
+      ],
+      "localStatuses": [
+        "correct",
+        "wrong",
+        "correct"
+      ],
+      "result": {
+        "status": "wrong",
+        "summary": "第 2 → 3 行出现首个错误",
+        "firstError": 3,
+        "firstErrorCertain": true,
+        "elapsedMs": 417.76,
+        "steps": [
+          {
+            "before": "Conv(2*x(t),delta(t-2),t)",
+            "after": "2*Conv(x(t),delta(t-2),t)",
+            "expected": "2*x(t - 2)",
+            "ruleIds": [
+              "C04",
+              "C06"
+            ],
+            "ruleNames": [
+              "常数提取",
+              "移位冲激卷积"
+            ],
+            "conditions": [],
+            "evidence": [
+              "已执行 2 次规则重写",
+              "候选与目标的符号差值为 0"
+            ],
+            "diff": {},
+            "trace": [
+              {
+                "ruleId": "C04",
+                "before": "Conv(2*x(t), delta(t - 2), t)",
+                "after": "2*Conv(x(t), delta(t - 2), t)",
+                "beforeLatex": "\\left[2 x\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)",
+                "afterLatex": "2 \\left[x\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)"
+              },
+              {
+                "ruleId": "C06",
+                "before": "2*Conv(x(t), delta(t - 2), t)",
+                "after": "2*x(t - 2)",
+                "beforeLatex": "2 \\left[x\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)",
+                "afterLatex": "2 x\\left(t - 2\\right)"
+              }
+            ],
+            "samples": [],
+            "inherited": false,
+            "status": "correct",
+            "explanation": "规则重写链与目标表达式符号一致。",
+            "beforeLatex": "\\left[2 x\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)",
+            "afterLatex": "2 \\left[x\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "2 x\\left(t - 2\\right)",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "correct",
+            "statusLabel": "已验证正确"
+          },
+          {
+            "before": "2*Conv(x(t),delta(t-2),t)",
+            "after": "2*x(t+2)",
+            "expected": "2*x(t - 2)",
+            "ruleIds": [
+              "C06"
+            ],
+            "ruleNames": [
+              "移位冲激卷积"
+            ],
+            "conditions": [],
+            "evidence": [
+              "规则产生正确候选",
+              "发现可复核的函数/数值反例"
+            ],
+            "diff": {
+              "path": "root.Mul[1].x[0].Add[0]",
+              "before": "2",
+              "after": "-2",
+              "beforeLatex": "2",
+              "afterLatex": "-2"
+            },
+            "trace": [
+              {
+                "ruleId": "C06",
+                "before": "2*Conv(x(t), delta(t - 2), t)",
+                "after": "2*x(t - 2)",
+                "beforeLatex": "2 \\left[x\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)",
+                "afterLatex": "2 x\\left(t - 2\\right)"
+              }
+            ],
+            "samples": [
+              {
+                "at": "t=-2/3",
+                "expected": "(0.0002468196081733591+0j)",
+                "actual": "(0.7357588823428847+0j)",
+                "error": 0.7355120627347113,
+                "difference": "(-0.7355120627347113+0j)",
+                "model": "可构造反例：第 k 个时域信号/频谱取 exp(-k*(v-k/3)^2)；s 域取符合已给初值的稳定有理函数，z 域取 z/(z-1/(k+2))。",
+                "witnessExpected": "2*exp(-(t - 7/3)^2)",
+                "witnessActual": "2*exp(-(t + 5/3)^2)"
+              }
+            ],
+            "inherited": false,
+            "status": "wrong",
+            "explanation": "该步与已验证的规则候选不一致。下方显示局部结构差异与建议结果。",
+            "beforeLatex": "2 \\left[x\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)",
+            "afterLatex": "2 x\\left(t + 2\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "2 x\\left(t - 2\\right)",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "wrong",
+            "statusLabel": "已确认错误"
+          },
+          {
+            "before": "2*x(t+2)",
+            "after": "x(t+2)+x(t+2)",
+            "expected": "x(t+2)+x(t+2)",
+            "ruleIds": [
+              "ALG"
+            ],
+            "ruleNames": [
+              "代数化简 / 已知变换对代入"
+            ],
+            "conditions": [],
+            "evidence": [
+              "符号差值化简为 0"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": true,
+            "status": "correct",
+            "explanation": "相邻两式在给定条件下符号等价。",
+            "beforeLatex": "2 x\\left(t + 2\\right)",
+            "afterLatex": "x\\left(t + 2\\right) + x\\left(t + 2\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "x\\left(t + 2\\right) + x\\left(t + 2\\right)",
+            "expectedRocLatex": "",
+            "line": 4,
+            "localStatus": "correct",
+            "statusLabel": "局部正确 · 继承前错"
+          }
+        ],
+        "normalized": [
+          "Conv(2*x(t), delta(t - 2), t)",
+          "2*Conv(x(t), delta(t - 2), t)",
+          "2*x(t + 2)",
+          "2*x(t + 2)"
+        ],
+        "ast": [
+          "Conv\n  Mul\n    2\n    x\n      t\n  delta\n    Add\n      t\n      -2\n  t",
+          "Mul\n  2\n  Conv\n    x\n      t\n    delta\n      Add\n        t\n        -2\n    t",
+          "Mul\n  2\n  x\n    Add\n      t\n      2",
+          "Add\n  x\n    Add\n      t\n      2\n  x\n    Add\n      t\n      2"
+        ],
+        "latex": [
+          "\\left[2 x\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)",
+          "2 \\left[x\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)",
+          "2 x\\left(t + 2\\right)",
+          "x\\left(t + 2\\right) + x\\left(t + 2\\right)"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "Conv(2*x(t),delta(t-2),t)",
+          "2*Conv(x(t),delta(t-2),t)",
+          "2*x(t - 2)",
+          "x(t+2)+x(t+2)"
+        ]
+      }
+    },
+    {
+      "id": "conv-distribute",
+      "expected": "correct",
+      "expectedFirstError": null,
+      "actual": "correct",
+      "actualFirstError": null,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "correct",
+        "correct"
+      ],
+      "localStatuses": [
+        "correct",
+        "correct"
+      ],
+      "result": {
+        "status": "correct",
+        "summary": "全部相邻步骤已通过验证。",
+        "firstError": null,
+        "firstErrorCertain": true,
+        "elapsedMs": 159.69,
+        "steps": [
+          {
+            "before": "Conv(x(t)+2*h(t),delta(t-1),t)",
+            "after": "Conv(x(t),delta(t-1),t)+2*Conv(h(t),delta(t-1),t)",
+            "expected": "2*h(t - 1) + x(t - 1)",
+            "ruleIds": [
+              "C03",
+              "C04",
+              "C06"
+            ],
+            "ruleNames": [
+              "卷积分配律",
+              "常数提取",
+              "移位冲激卷积"
+            ],
+            "conditions": [],
+            "evidence": [
+              "已执行 4 次规则重写",
+              "候选与目标的符号差值为 0"
+            ],
+            "diff": {},
+            "trace": [
+              {
+                "ruleId": "C03",
+                "before": "Conv(2*h(t) + x(t), delta(t - 1), t)",
+                "after": "Conv(2*h(t), delta(t - 1), t) + Conv(x(t), delta(t - 1), t)",
+                "beforeLatex": "\\left[\\left(2 h + x\\right)\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right)",
+                "afterLatex": "\\left[2 h\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right) + \\left[x\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right)"
+              },
+              {
+                "ruleId": "C04",
+                "before": "Conv(2*h(t), delta(t - 1), t) + Conv(x(t), delta(t - 1), t)",
+                "after": "2*Conv(h(t), delta(t - 1), t) + Conv(x(t), delta(t - 1), t)",
+                "beforeLatex": "\\left[2 h\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right) + \\left[x\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right)",
+                "afterLatex": "2 \\left[h\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right) + \\left[x\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right)"
+              },
+              {
+                "ruleId": "C06",
+                "before": "2*Conv(h(t), delta(t - 1), t) + Conv(x(t), delta(t - 1), t)",
+                "after": "Conv(x(t), delta(t - 1), t) + 2*h(t - 1)",
+                "beforeLatex": "2 \\left[h\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right) + \\left[x\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right)",
+                "afterLatex": "\\left[x\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right) + 2 h\\left(t - 1\\right)"
+              },
+              {
+                "ruleId": "C06",
+                "before": "Conv(x(t), delta(t - 1), t) + 2*h(t - 1)",
+                "after": "2*h(t - 1) + x(t - 1)",
+                "beforeLatex": "\\left[x\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right) + 2 h\\left(t - 1\\right)",
+                "afterLatex": "2 h\\left(t - 1\\right) + x\\left(t - 1\\right)"
+              }
+            ],
+            "samples": [],
+            "inherited": false,
+            "status": "correct",
+            "explanation": "规则重写链与目标表达式符号一致。",
+            "beforeLatex": "\\left[\\left(2 h + x\\right)\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right)",
+            "afterLatex": "2 \\left[h\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right) + \\left[x\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "2 h\\left(t - 1\\right) + x\\left(t - 1\\right)",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "correct",
+            "statusLabel": "已验证正确"
+          },
+          {
+            "before": "Conv(x(t),delta(t-1),t)+2*Conv(h(t),delta(t-1),t)",
+            "after": "x(t-1)+2*h(t-1)",
+            "expected": "2*h(t - 1) + x(t - 1)",
+            "ruleIds": [
+              "C06"
+            ],
+            "ruleNames": [
+              "移位冲激卷积"
+            ],
+            "conditions": [],
+            "evidence": [
+              "已执行 2 次规则重写",
+              "候选与目标的符号差值为 0"
+            ],
+            "diff": {},
+            "trace": [
+              {
+                "ruleId": "C06",
+                "before": "2*Conv(h(t), delta(t - 1), t) + Conv(x(t), delta(t - 1), t)",
+                "after": "2*Conv(h(t), delta(t - 1), t) + x(t - 1)",
+                "beforeLatex": "2 \\left[h\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right) + \\left[x\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right)",
+                "afterLatex": "2 \\left[h\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right) + x\\left(t - 1\\right)"
+              },
+              {
+                "ruleId": "C06",
+                "before": "2*Conv(h(t), delta(t - 1), t) + x(t - 1)",
+                "after": "2*h(t - 1) + x(t - 1)",
+                "beforeLatex": "2 \\left[h\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right) + x\\left(t - 1\\right)",
+                "afterLatex": "2 h\\left(t - 1\\right) + x\\left(t - 1\\right)"
+              }
+            ],
+            "samples": [],
+            "inherited": false,
+            "status": "correct",
+            "explanation": "规则重写链与目标表达式符号一致。",
+            "beforeLatex": "2 \\left[h\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right) + \\left[x\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right)",
+            "afterLatex": "2 h\\left(t - 1\\right) + x\\left(t - 1\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "2 h\\left(t - 1\\right) + x\\left(t - 1\\right)",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "correct",
+            "statusLabel": "已验证正确"
+          }
+        ],
+        "normalized": [
+          "Conv(2*h(t) + x(t), delta(t - 1), t)",
+          "2*Conv(h(t), delta(t - 1), t) + Conv(x(t), delta(t - 1), t)",
+          "2*h(t - 1) + x(t - 1)"
+        ],
+        "ast": [
+          "Conv\n  Add\n    x\n      t\n    Mul\n      2\n      h\n        t\n  delta\n    Add\n      t\n      -1\n  t",
+          "Add\n  Conv\n    x\n      t\n    delta\n      Add\n        t\n        -1\n    t\n  Mul\n    2\n    Conv\n      h\n        t\n      delta\n        Add\n          t\n          -1\n      t",
+          "Add\n  x\n    Add\n      t\n      -1\n  Mul\n    2\n    h\n      Add\n        t\n        -1"
+        ],
+        "latex": [
+          "\\left[\\left(2 h + x\\right)\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right)",
+          "2 \\left[h\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right) + \\left[x\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\left(t\\right)",
+          "2 h\\left(t - 1\\right) + x\\left(t - 1\\right)"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "Conv(x(t)+2*h(t),delta(t-1),t)",
+          "Conv(x(t),delta(t-1),t)+2*Conv(h(t),delta(t-1),t)",
+          "x(t-1)+2*h(t-1)"
+        ]
+      }
+    },
+    {
+      "id": "conv-cascade",
+      "expected": "correct",
+      "expectedFirstError": null,
+      "actual": "correct",
+      "actualFirstError": null,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "correct",
+        "correct"
+      ],
+      "localStatuses": [
+        "correct",
+        "correct"
+      ],
+      "result": {
+        "status": "correct",
+        "summary": "全部相邻步骤已通过验证。",
+        "firstError": null,
+        "firstErrorCertain": true,
+        "elapsedMs": 92.84,
+        "steps": [
+          {
+            "before": "Conv(Conv(x(t),delta(t-1),t),delta(t-2),t)",
+            "after": "Conv(x(t-1),delta(t-2),t)",
+            "expected": "x(t - 3)",
+            "ruleIds": [
+              "C06"
+            ],
+            "ruleNames": [
+              "移位冲激卷积"
+            ],
+            "conditions": [],
+            "evidence": [
+              "已执行 2 次规则重写",
+              "候选与目标的符号差值为 0"
+            ],
+            "diff": {},
+            "trace": [
+              {
+                "ruleId": "C06",
+                "before": "Conv(Conv(x(t), delta(t - 1), t), delta(t - 2), t)",
+                "after": "Conv(x(t - 1), delta(t - 2), t)",
+                "beforeLatex": "\\left[\\left[x\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)",
+                "afterLatex": "\\left[x\\left(\\cdot - 1\\right)\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)"
+              },
+              {
+                "ruleId": "C06",
+                "before": "Conv(x(t - 1), delta(t - 2), t)",
+                "after": "x(t - 3)",
+                "beforeLatex": "\\left[x\\left(\\cdot - 1\\right)\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)",
+                "afterLatex": "x\\left(t - 3\\right)"
+              }
+            ],
+            "samples": [],
+            "inherited": false,
+            "status": "correct",
+            "explanation": "规则重写链与目标表达式符号一致。",
+            "beforeLatex": "\\left[\\left[x\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)",
+            "afterLatex": "\\left[x\\left(\\cdot - 1\\right)\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "x\\left(t - 3\\right)",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "correct",
+            "statusLabel": "已验证正确"
+          },
+          {
+            "before": "Conv(x(t-1),delta(t-2),t)",
+            "after": "x(t-3)",
+            "expected": "x(t - 3)",
+            "ruleIds": [
+              "C06"
+            ],
+            "ruleNames": [
+              "移位冲激卷积"
+            ],
+            "conditions": [],
+            "evidence": [
+              "已执行 1 次规则重写",
+              "候选与目标的符号差值为 0"
+            ],
+            "diff": {},
+            "trace": [
+              {
+                "ruleId": "C06",
+                "before": "Conv(x(t - 1), delta(t - 2), t)",
+                "after": "x(t - 3)",
+                "beforeLatex": "\\left[x\\left(\\cdot - 1\\right)\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)",
+                "afterLatex": "x\\left(t - 3\\right)"
+              }
+            ],
+            "samples": [],
+            "inherited": false,
+            "status": "correct",
+            "explanation": "规则重写链与目标表达式符号一致。",
+            "beforeLatex": "\\left[x\\left(\\cdot - 1\\right)\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)",
+            "afterLatex": "x\\left(t - 3\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "x\\left(t - 3\\right)",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "correct",
+            "statusLabel": "已验证正确"
+          }
+        ],
+        "normalized": [
+          "Conv(Conv(x(t), delta(t - 1), t), delta(t - 2), t)",
+          "Conv(x(t - 1), delta(t - 2), t)",
+          "x(t - 3)"
+        ],
+        "ast": [
+          "Conv\n  Conv\n    x\n      t\n    delta\n      Add\n        t\n        -1\n    t\n  delta\n    Add\n      t\n      -2\n  t",
+          "Conv\n  x\n    Add\n      t\n      -1\n  delta\n    Add\n      t\n      -2\n  t",
+          "x\n  Add\n    t\n    -3"
+        ],
+        "latex": [
+          "\\left[\\left[x\\ast \\delta\\left(\\cdot - 1\\right)\\right]\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)",
+          "\\left[x\\left(\\cdot - 1\\right)\\ast \\delta\\left(\\cdot - 2\\right)\\right]\\left(t\\right)",
+          "x\\left(t - 3\\right)"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "Conv(Conv(x(t),delta(t-1),t),delta(t-2),t)",
+          "Conv(x(t-1),delta(t-2),t)",
+          "x(t-3)"
+        ]
+      }
+    },
+    {
+      "id": "conv-derivative",
+      "expected": "wrong",
+      "expectedFirstError": 2,
+      "actual": "wrong",
+      "actualFirstError": 2,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "localStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "result": {
+        "status": "wrong",
+        "summary": "第 1 → 2 行出现首个错误",
+        "firstError": 2,
+        "firstErrorCertain": true,
+        "elapsedMs": 279.45,
+        "steps": [
+          {
+            "before": "D(Conv(x(t),h(t),t),t)",
+            "after": "Conv(D(x(t),t),h(t),t)+Conv(D(x(t),t),h(t),t)",
+            "expected": "Conv(D(x(t), t), h(t), t)",
+            "ruleIds": [
+              "C08"
+            ],
+            "ruleNames": [
+              "卷积求导"
+            ],
+            "conditions": [],
+            "evidence": [
+              "规则产生正确候选",
+              "发现可复核的函数/数值反例"
+            ],
+            "diff": {
+              "path": "root",
+              "before": "2*Conv(Derivative(x(t), t), h(t), t)",
+              "after": "Conv(Derivative(x(t), t), h(t), t)"
+            },
+            "trace": [
+              {
+                "ruleId": "C08",
+                "before": "D(Conv(x(t), h(t), t), t)",
+                "after": "Conv(D(x(t), t), h(t), t)",
+                "beforeLatex": "\\frac{\\mathrm{d} \\left[x\\ast h\\right]\\left(t\\right)}{\\mathrm{d}t}",
+                "afterLatex": "\\left[\\frac{\\mathrm{d} x}{\\mathrm{d}t}\\ast h\\right]\\left(t\\right)"
+              }
+            ],
+            "samples": [
+              {
+                "at": "t=1/3",
+                "expected": "(0.6763662678232586+0j)",
+                "actual": "(1.3527325356465172+0j)",
+                "error": 0.6763662678232586,
+                "difference": "(-0.6763662678232586+0j)",
+                "model": "可构造反例：第 k 个时域信号/频谱取 exp(-k*(v-k/3)^2)；s 域取符合已给初值的稳定有理函数，z 域取 z/(z-1/(k+2))。",
+                "witnessExpected": "4*sqrt(3)*sqrt(pi)*(1 - t)*exp(-2*t^2/3 + 4*t/3 - 2/3)/9",
+                "witnessActual": "8*sqrt(3)*sqrt(pi)*(1 - t)*exp(-2*t^2/3 + 4*t/3 - 2/3)/9"
+              }
+            ],
+            "inherited": false,
+            "status": "wrong",
+            "explanation": "卷积求导只需对一侧求导；不能套用普通乘积求导后相加。",
+            "beforeLatex": "\\frac{\\mathrm{d} \\left[x\\ast h\\right]\\left(t\\right)}{\\mathrm{d}t}",
+            "afterLatex": "\\left[\\frac{\\mathrm{d} x}{\\mathrm{d}t}\\ast h\\right]\\left(t\\right) + \\left[\\frac{\\mathrm{d} x}{\\mathrm{d}t}\\ast h\\right]\\left(t\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\left[\\frac{\\mathrm{d} x}{\\mathrm{d}t}\\ast h\\right]\\left(t\\right)",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "wrong",
+            "statusLabel": "已确认错误"
+          },
+          {
+            "before": "Conv(D(x(t),t),h(t),t)+Conv(D(x(t),t),h(t),t)",
+            "after": "2*Conv(D(x(t),t),h(t),t)",
+            "expected": "2*Conv(D(x(t),t),h(t),t)",
+            "ruleIds": [
+              "ALG"
+            ],
+            "ruleNames": [
+              "代数化简 / 已知变换对代入"
+            ],
+            "conditions": [],
+            "evidence": [
+              "符号差值化简为 0"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": true,
+            "status": "correct",
+            "explanation": "相邻两式在给定条件下符号等价。",
+            "beforeLatex": "\\left[\\frac{\\mathrm{d} x}{\\mathrm{d}t}\\ast h\\right]\\left(t\\right) + \\left[\\frac{\\mathrm{d} x}{\\mathrm{d}t}\\ast h\\right]\\left(t\\right)",
+            "afterLatex": "2 \\left[\\frac{\\mathrm{d} x}{\\mathrm{d}t}\\ast h\\right]\\left(t\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "2 \\left[\\frac{\\mathrm{d} x}{\\mathrm{d}t}\\ast h\\right]\\left(t\\right)",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "correct",
+            "statusLabel": "局部正确 · 继承前错"
+          }
+        ],
+        "normalized": [
+          "Derivative(Conv(x(t), h(t), t), h(t))*Derivative(h(t), t) + Derivative(Conv(x(t), h(t), t), x(t))*Derivative(x(t), t) + Subs(Derivative(Conv(x(t), h(t), _xi_3), _xi_3), _xi_3, t)",
+          "2*Conv(Derivative(x(t), t), h(t), t)",
+          "2*Conv(Derivative(x(t), t), h(t), t)"
+        ],
+        "ast": [
+          "D\n  Conv\n    x\n      t\n    h\n      t\n    t\n  t",
+          "Add\n  Conv\n    D\n      x\n        t\n      t\n    h\n      t\n    t\n  Conv\n    D\n      x\n        t\n      t\n    h\n      t\n    t",
+          "Mul\n  2\n  Conv\n    D\n      x\n        t\n      t\n    h\n      t\n    t"
+        ],
+        "latex": [
+          "\\frac{\\mathrm{d} \\left[x\\ast h\\right]\\left(t\\right)}{\\mathrm{d}t}",
+          "\\left[\\frac{\\mathrm{d} x}{\\mathrm{d}t}\\ast h\\right]\\left(t\\right) + \\left[\\frac{\\mathrm{d} x}{\\mathrm{d}t}\\ast h\\right]\\left(t\\right)",
+          "2 \\left[\\frac{\\mathrm{d} x}{\\mathrm{d}t}\\ast h\\right]\\left(t\\right)"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "D(Conv(x(t),h(t),t),t)",
+          "Conv(D(x(t), t), h(t), t)",
+          "2*Conv(D(x(t),t),h(t),t)"
+        ]
+      }
+    },
+    {
+      "id": "conv-integer",
+      "expected": "unknown",
+      "expectedFirstError": null,
+      "actual": "unknown",
+      "actualFirstError": null,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "unknown"
+      ],
+      "localStatuses": [
+        "unknown"
+      ],
+      "result": {
+        "status": "unknown",
+        "summary": "存在尚未证实的步骤，不能判定整条推导正确。",
+        "firstError": null,
+        "firstErrorCertain": true,
+        "elapsedMs": 40.81,
+        "steps": [
+          {
+            "before": "Conv(x(n),delta(n-1/2),n)",
+            "after": "x(n-1/2)",
+            "expected": "x(n - 1/2)",
+            "ruleIds": [
+              "C06"
+            ],
+            "ruleNames": [
+              "移位冲激卷积"
+            ],
+            "conditions": [
+              "离散时移必须是整数"
+            ],
+            "evidence": [
+              "已执行 1 次规则重写",
+              "候选与目标的符号差值为 0"
+            ],
+            "diff": {},
+            "trace": [
+              {
+                "ruleId": "C06",
+                "before": "Conv(x(n), delta(n - 1/2), n)",
+                "after": "x(n - 1/2)",
+                "beforeLatex": "\\left[x\\ast \\delta\\left[\\cdot - \\frac{1}{2}\\right]\\right]\\left[n\\right]",
+                "afterLatex": "x\\left[n - \\frac{1}{2}\\right]"
+              }
+            ],
+            "samples": [],
+            "inherited": false,
+            "status": "unknown",
+            "explanation": "表达式符合规则形式，但前提尚未满足：离散时移必须是整数",
+            "beforeLatex": "\\left[x\\ast \\delta\\left[\\cdot - \\frac{1}{2}\\right]\\right]\\left[n\\right]",
+            "afterLatex": "x\\left[n - \\frac{1}{2}\\right]",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "x\\left[n - \\frac{1}{2}\\right]",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "unknown",
+            "statusLabel": "暂无法判断"
+          }
+        ],
+        "normalized": [
+          "Conv(x(n), delta(n - 1/2), n)",
+          "x(n - 1/2)"
+        ],
+        "ast": [
+          "Conv\n  x\n    n\n  delta\n    Add\n      n\n      Mul\n        -1\n        Pow\n          2\n          -1\n  n",
+          "x\n  Add\n    n\n    Mul\n      -1\n      Pow\n        2\n        -1"
+        ],
+        "latex": [
+          "\\left[x\\ast \\delta\\left[\\cdot - \\frac{1}{2}\\right]\\right]\\left[n\\right]",
+          "x\\left[n - \\frac{1}{2}\\right]"
+        ],
+        "rocLatex": [
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "Conv(x(n),delta(n-1/2),n)",
+          "x(n-1/2)"
+        ]
+      }
+    },
+    {
+      "id": "conv-product",
+      "expected": "wrong",
+      "expectedFirstError": 2,
+      "actual": "wrong",
+      "actualFirstError": 2,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "localStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "result": {
+        "status": "wrong",
+        "summary": "第 1 → 2 行出现首个错误",
+        "firstError": 2,
+        "firstErrorCertain": true,
+        "elapsedMs": 676.87,
+        "steps": [
+          {
+            "before": "Conv(x(t),h(t)+g(t),t)",
+            "after": "x(t)*(h(t)+g(t))",
+            "expected": "Conv(x(t), g(t), t) + Conv(x(t), h(t), t)",
+            "ruleIds": [
+              "C03"
+            ],
+            "ruleNames": [
+              "卷积分配律"
+            ],
+            "conditions": [],
+            "evidence": [
+              "规则产生正确候选",
+              "发现可复核的函数/数值反例"
+            ],
+            "diff": {
+              "path": "root",
+              "before": "(g(t) + h(t))*x(t)",
+              "after": "Conv(x(t), g(t), t) + Conv(x(t), h(t), t)",
+              "beforeLatex": "\\left(g\\left(t\\right) + h\\left(t\\right)\\right) x\\left(t\\right)",
+              "afterLatex": "\\left[x\\ast g\\right]\\left(t\\right) + \\left[x\\ast h\\right]\\left(t\\right)"
+            },
+            "trace": [
+              {
+                "ruleId": "C03",
+                "before": "Conv(x(t), g(t) + h(t), t)",
+                "after": "Conv(x(t), g(t), t) + Conv(x(t), h(t), t)",
+                "beforeLatex": "\\left[x\\ast \\left(g + h\\right)\\right]\\left(t\\right)",
+                "afterLatex": "\\left[x\\ast g\\right]\\left(t\\right) + \\left[x\\ast h\\right]\\left(t\\right)"
+              }
+            ],
+            "samples": [
+              {
+                "at": "t=1/3",
+                "expected": "(1.1795360090235536+0j)",
+                "actual": "(1.0643345410325349+0j)",
+                "error": 0.11520146799101869,
+                "difference": "(0.11520146799101869+0j)",
+                "model": "可构造反例：第 k 个时域信号/频谱取 exp(-k*(v-k/3)^2)；s 域取符合已给初值的稳定有理函数，z 域取 z/(z-1/(k+2))。",
+                "witnessExpected": "sqrt(pi)*exp(-3*t^2/4 + 2*t - 4/3)/2 + sqrt(3)*sqrt(pi)*exp(-2*t^2/3 + 4*t/3 - 2/3)/3",
+                "witnessActual": "(exp(-2*(t - 2/3)^2) + exp(-3*(t - 1)^2))*exp(-(t - 1/3)^2)"
+              }
+            ],
+            "inherited": false,
+            "status": "wrong",
+            "explanation": "该步与已验证的规则候选不一致。下方显示局部结构差异与建议结果。",
+            "beforeLatex": "\\left[x\\ast \\left(g + h\\right)\\right]\\left(t\\right)",
+            "afterLatex": "\\left(g\\left(t\\right) + h\\left(t\\right)\\right) x\\left(t\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\left[x\\ast g\\right]\\left(t\\right) + \\left[x\\ast h\\right]\\left(t\\right)",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "wrong",
+            "statusLabel": "已确认错误"
+          },
+          {
+            "before": "x(t)*(h(t)+g(t))",
+            "after": "x(t)*h(t)+x(t)*g(t)",
+            "expected": "x(t)*h(t)+x(t)*g(t)",
+            "ruleIds": [
+              "ALG"
+            ],
+            "ruleNames": [
+              "代数化简 / 已知变换对代入"
+            ],
+            "conditions": [],
+            "evidence": [
+              "符号差值化简为 0"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": true,
+            "status": "correct",
+            "explanation": "相邻两式在给定条件下符号等价。",
+            "beforeLatex": "\\left(g\\left(t\\right) + h\\left(t\\right)\\right) x\\left(t\\right)",
+            "afterLatex": "g\\left(t\\right) x\\left(t\\right) + h\\left(t\\right) x\\left(t\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "g\\left(t\\right) x\\left(t\\right) + h\\left(t\\right) x\\left(t\\right)",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "correct",
+            "statusLabel": "局部正确 · 继承前错"
+          }
+        ],
+        "normalized": [
+          "Conv(x(t), g(t) + h(t), t)",
+          "(g(t) + h(t))*x(t)",
+          "(g(t) + h(t))*x(t)"
+        ],
+        "ast": [
+          "Conv\n  x\n    t\n  Add\n    h\n      t\n    g\n      t\n  t",
+          "Mul\n  x\n    t\n  Add\n    h\n      t\n    g\n      t",
+          "Add\n  Mul\n    x\n      t\n    h\n      t\n  Mul\n    x\n      t\n    g\n      t"
+        ],
+        "latex": [
+          "\\left[x\\ast \\left(g + h\\right)\\right]\\left(t\\right)",
+          "\\left(g\\left(t\\right) + h\\left(t\\right)\\right) x\\left(t\\right)",
+          "g\\left(t\\right) x\\left(t\\right) + h\\left(t\\right) x\\left(t\\right)"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "Conv(x(t),h(t)+g(t),t)",
+          "Conv(x(t), g(t), t) + Conv(x(t), h(t), t)",
+          "x(t)*h(t)+x(t)*g(t)"
+        ]
+      }
+    },
+    {
+      "id": "ft-shift",
+      "expected": "wrong",
+      "expectedFirstError": 2,
+      "actual": "wrong",
+      "actualFirstError": 2,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "localStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "result": {
+        "status": "wrong",
+        "summary": "第 1 → 2 行出现首个错误",
+        "firstError": 2,
+        "firstErrorCertain": true,
+        "elapsedMs": 350.09,
+        "steps": [
+          {
+            "before": "FT(x(t-2),t,w)",
+            "after": "exp(2*I*w)*X(w)",
+            "expected": "X(w)*exp(-2*I*w)",
+            "ruleIds": [
+              "F02"
+            ],
+            "ruleNames": [
+              "时移性质"
+            ],
+            "conditions": [],
+            "evidence": [
+              "规则产生正确候选",
+              "发现可复核的函数/数值反例"
+            ],
+            "diff": {
+              "path": "root.Mul[1].exp[0].Mul[0]",
+              "before": "2",
+              "after": "-2",
+              "beforeLatex": "2",
+              "afterLatex": "-2"
+            },
+            "trace": [
+              {
+                "ruleId": "F02",
+                "before": "FT(x(t - 2), t, w)",
+                "after": "X(w)*exp(-2*I*w)",
+                "beforeLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(t - 2\\right)\\right\\}",
+                "afterLatex": "X\\left(\\omega\\right) e^{- 2 j \\omega}"
+              }
+            ],
+            "samples": [
+              {
+                "at": "w=1/3",
+                "expected": "(0.5217875937783321-0.7922990009958477j)",
+                "actual": "(0.8928094756201743+0.3207666445296789j)",
+                "error": 1.1732742083820895,
+                "difference": "(-0.3710218818418422-1.1130656455255266j)"
+              }
+            ],
+            "inherited": false,
+            "status": "wrong",
+            "explanation": "时移相位因子的方向不一致。延迟 a 对应负指数 exp(-I*w*a)。",
+            "beforeLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(t - 2\\right)\\right\\}",
+            "afterLatex": "X\\left(\\omega\\right) e^{2 j \\omega}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "X\\left(\\omega\\right) e^{- 2 j \\omega}",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "wrong",
+            "statusLabel": "已确认错误"
+          },
+          {
+            "before": "exp(2*I*w)*X(w)",
+            "after": "exp(2*I*w)/(1+I*w)",
+            "expected": "exp(2*I*w)/(1+I*w)",
+            "ruleIds": [
+              "ALG"
+            ],
+            "ruleNames": [
+              "代数化简 / 已知变换对代入"
+            ],
+            "conditions": [],
+            "evidence": [
+              "符号差值化简为 0"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": true,
+            "status": "correct",
+            "explanation": "相邻两式在给定条件下符号等价。",
+            "beforeLatex": "X\\left(\\omega\\right) e^{2 j \\omega}",
+            "afterLatex": "\\frac{e^{2 j \\omega}}{j \\omega + 1}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\frac{e^{2 j \\omega}}{j \\omega + 1}",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "correct",
+            "statusLabel": "局部正确 · 继承前错"
+          }
+        ],
+        "normalized": [
+          "FT(x(t - 2), t, w)",
+          "exp(2*I*w)/(I*w + 1)",
+          "exp(2*I*w)/(I*w + 1)"
+        ],
+        "ast": [
+          "FT\n  x\n    Add\n      t\n      -2\n  t\n  w",
+          "Mul\n  exp\n    Mul\n      Mul\n        2\n        I\n      w\n  X\n    w",
+          "Mul\n  exp\n    Mul\n      Mul\n        2\n        I\n      w\n  Pow\n    Add\n      1\n      Mul\n        I\n        w\n    -1"
+        ],
+        "latex": [
+          "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(t - 2\\right)\\right\\}",
+          "X\\left(\\omega\\right) e^{2 j \\omega}",
+          "\\frac{e^{2 j \\omega}}{j \\omega + 1}"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "FT(x(t-2),t,w)",
+          "X(w)*exp(-2*I*w)",
+          "exp(2*I*w)/(1+I*w)"
+        ]
+      }
+    },
+    {
+      "id": "ft-scale",
+      "expected": "wrong",
+      "expectedFirstError": 2,
+      "actual": "wrong",
+      "actualFirstError": 2,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "localStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "result": {
+        "status": "wrong",
+        "summary": "第 1 → 2 行出现首个错误",
+        "firstError": 2,
+        "firstErrorCertain": true,
+        "elapsedMs": 242.94,
+        "steps": [
+          {
+            "before": "FT(x(-2*t),t,w)",
+            "after": "-X(-w/2)/2",
+            "expected": "X(-w/2)/2",
+            "ruleIds": [
+              "F04"
+            ],
+            "ruleNames": [
+              "尺度变换"
+            ],
+            "conditions": [],
+            "evidence": [
+              "规则产生正确候选",
+              "发现可复核的函数/数值反例"
+            ],
+            "diff": {
+              "path": "root.Mul[0]",
+              "before": "-1/2",
+              "after": "1/2",
+              "beforeLatex": "- \\frac{1}{2}",
+              "afterLatex": "\\frac{1}{2}"
+            },
+            "trace": [
+              {
+                "ruleId": "F04",
+                "before": "FT(x(-2*t), t, w)",
+                "after": "X(-w/2)/2",
+                "beforeLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(- 2 t\\right)\\right\\}",
+                "afterLatex": "\\frac{X\\left(\\frac{\\left(-1\\right) \\omega}{2}\\right)}{2}"
+              }
+            ],
+            "samples": [
+              {
+                "at": "w=1/3",
+                "expected": "(0.4864864864864865+0.08108108108108109j)",
+                "actual": "(-0.4864864864864865-0.08108108108108109j)",
+                "error": 0.9863939238321437,
+                "difference": "(0.972972972972973+0.16216216216216217j)"
+              }
+            ],
+            "inherited": false,
+            "status": "wrong",
+            "explanation": "尺度变换需同时替换频率并乘 1/abs(a)，负尺度也不能使用负幅度。",
+            "beforeLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(- 2 t\\right)\\right\\}",
+            "afterLatex": "\\frac{\\left(-1\\right) X\\left(\\frac{\\left(-1\\right) \\omega}{2}\\right)}{2}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\frac{X\\left(\\frac{\\left(-1\\right) \\omega}{2}\\right)}{2}",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "wrong",
+            "statusLabel": "已确认错误"
+          },
+          {
+            "before": "-X(-w/2)/2",
+            "after": "-1/(2*(1-I*w/2))",
+            "expected": "-1/(2*(1-I*w/2))",
+            "ruleIds": [
+              "ALG"
+            ],
+            "ruleNames": [
+              "代数化简 / 已知变换对代入"
+            ],
+            "conditions": [],
+            "evidence": [
+              "符号差值化简为 0"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": true,
+            "status": "correct",
+            "explanation": "相邻两式在给定条件下符号等价。",
+            "beforeLatex": "\\frac{\\left(-1\\right) X\\left(\\frac{\\left(-1\\right) \\omega}{2}\\right)}{2}",
+            "afterLatex": "- \\frac{1}{2 \\left(- \\frac{j \\omega}{2} + 1\\right)}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "- \\frac{1}{2 \\left(- \\frac{j \\omega}{2} + 1\\right)}",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "correct",
+            "statusLabel": "局部正确 · 继承前错"
+          }
+        ],
+        "normalized": [
+          "FT(x(-2*t), t, w)",
+          "1/(I*w - 2)",
+          "1/(I*w - 2)"
+        ],
+        "ast": [
+          "FT\n  x\n    Mul\n      -2\n      t\n  t\n  w",
+          "Mul\n  Mul\n    -1\n    X\n      Mul\n        Mul\n          -1\n          w\n        Pow\n          2\n          -1\n  Pow\n    2\n    -1",
+          "Mul\n  -1\n  Pow\n    Mul\n      2\n      Add\n        1\n        Mul\n          -1\n          Mul\n            I\n            w\n          Pow\n            2\n            -1\n    -1"
+        ],
+        "latex": [
+          "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(- 2 t\\right)\\right\\}",
+          "\\frac{\\left(-1\\right) X\\left(\\frac{\\left(-1\\right) \\omega}{2}\\right)}{2}",
+          "- \\frac{1}{2 \\left(- \\frac{j \\omega}{2} + 1\\right)}"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "FT(x(-2*t),t,w)",
+          "X(-w/2)/2",
+          "-1/(2*(1-I*w/2))"
+        ]
+      }
+    },
+    {
+      "id": "multi",
+      "expected": "correct",
+      "expectedFirstError": null,
+      "actual": "correct",
+      "actualFirstError": null,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "correct",
+        "correct",
+        "correct"
+      ],
+      "localStatuses": [
+        "correct",
+        "correct",
+        "correct"
+      ],
+      "result": {
+        "status": "correct",
+        "summary": "全部相邻步骤已通过验证。",
+        "firstError": null,
+        "firstErrorCertain": true,
+        "elapsedMs": 2142.54,
+        "steps": [
+          {
+            "before": "FT(2*x(t-3)+exp(-2*t^2),t,w)",
+            "after": "2*FT(x(t-3),t,w)+FT(exp(-2*t^2),t,w)",
+            "expected": "2*X(w)*exp(-3*I*w) + sqrt(2)*sqrt(pi)*exp(-w^2/8)/2",
+            "ruleIds": [
+              "F01",
+              "F02",
+              "F12"
+            ],
+            "ruleNames": [
+              "傅里叶线性",
+              "时移性质",
+              "高斯变换对"
+            ],
+            "conditions": [],
+            "evidence": [
+              "已执行 4 次规则重写",
+              "候选与目标的符号差值为 0"
+            ],
+            "diff": {},
+            "trace": [
+              {
+                "ruleId": "F01",
+                "before": "FT(2*x(t - 3) + exp(-2*t^2), t, w)",
+                "after": "FT(2*x(t - 3), t, w) + FT(exp(-2*t^2), t, w)",
+                "beforeLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{2 x\\left(t - 3\\right) + e^{- 2 t^{2}}\\right\\}",
+                "afterLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{2 x\\left(t - 3\\right)\\right\\} + \\mathcal{F}_{t\\to \\omega}\\!\\left\\{e^{- 2 t^{2}}\\right\\}"
+              },
+              {
+                "ruleId": "F01",
+                "before": "FT(2*x(t - 3), t, w) + FT(exp(-2*t^2), t, w)",
+                "after": "2*FT(x(t - 3), t, w) + FT(exp(-2*t^2), t, w)",
+                "beforeLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{2 x\\left(t - 3\\right)\\right\\} + \\mathcal{F}_{t\\to \\omega}\\!\\left\\{e^{- 2 t^{2}}\\right\\}",
+                "afterLatex": "2 \\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(t - 3\\right)\\right\\} + \\mathcal{F}_{t\\to \\omega}\\!\\left\\{e^{- 2 t^{2}}\\right\\}"
+              },
+              {
+                "ruleId": "F02",
+                "before": "2*FT(x(t - 3), t, w) + FT(exp(-2*t^2), t, w)",
+                "after": "FT(exp(-2*t^2), t, w) + 2*X(w)*exp(-3*I*w)",
+                "beforeLatex": "2 \\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(t - 3\\right)\\right\\} + \\mathcal{F}_{t\\to \\omega}\\!\\left\\{e^{- 2 t^{2}}\\right\\}",
+                "afterLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{e^{- 2 t^{2}}\\right\\} + 2 X\\left(\\omega\\right) e^{- 3 j \\omega}"
+              },
+              {
+                "ruleId": "F12",
+                "before": "FT(exp(-2*t^2), t, w) + 2*X(w)*exp(-3*I*w)",
+                "after": "2*X(w)*exp(-3*I*w) + sqrt(2)*sqrt(pi)*exp(-w^2/8)/2",
+                "beforeLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{e^{- 2 t^{2}}\\right\\} + 2 X\\left(\\omega\\right) e^{- 3 j \\omega}",
+                "afterLatex": "\\frac{\\sqrt{2} \\sqrt{\\pi} e^{\\frac{\\left(-1\\right) \\omega^{2}}{8}}}{2} + 2 X\\left(\\omega\\right) e^{- 3 j \\omega}"
+              }
+            ],
+            "samples": [],
+            "inherited": false,
+            "status": "correct",
+            "explanation": "规则重写链与目标表达式符号一致。",
+            "beforeLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{2 x\\left(t - 3\\right) + e^{- 2 t^{2}}\\right\\}",
+            "afterLatex": "2 \\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(t - 3\\right)\\right\\} + \\mathcal{F}_{t\\to \\omega}\\!\\left\\{e^{- 2 t^{2}}\\right\\}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\frac{\\sqrt{2} \\sqrt{\\pi} e^{\\frac{\\left(-1\\right) \\omega^{2}}{8}}}{2} + 2 X\\left(\\omega\\right) e^{- 3 j \\omega}",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "correct",
+            "statusLabel": "已验证正确"
+          },
+          {
+            "before": "2*FT(x(t-3),t,w)+FT(exp(-2*t^2),t,w)",
+            "after": "2*exp(-3*I*w)*X(w)+sqrt(pi/2)*exp(-w^2/8)",
+            "expected": "2*X(w)*exp(-3*I*w) + sqrt(2)*sqrt(pi)*exp(-w^2/8)/2",
+            "ruleIds": [
+              "F02",
+              "F12"
+            ],
+            "ruleNames": [
+              "时移性质",
+              "高斯变换对"
+            ],
+            "conditions": [],
+            "evidence": [
+              "已执行 2 次规则重写",
+              "候选与目标的符号差值为 0"
+            ],
+            "diff": {},
+            "trace": [
+              {
+                "ruleId": "F02",
+                "before": "2*FT(x(t - 3), t, w) + FT(exp(-2*t^2), t, w)",
+                "after": "FT(exp(-2*t^2), t, w) + 2*X(w)*exp(-3*I*w)",
+                "beforeLatex": "2 \\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(t - 3\\right)\\right\\} + \\mathcal{F}_{t\\to \\omega}\\!\\left\\{e^{- 2 t^{2}}\\right\\}",
+                "afterLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{e^{- 2 t^{2}}\\right\\} + 2 X\\left(\\omega\\right) e^{- 3 j \\omega}"
+              },
+              {
+                "ruleId": "F12",
+                "before": "FT(exp(-2*t^2), t, w) + 2*X(w)*exp(-3*I*w)",
+                "after": "2*X(w)*exp(-3*I*w) + sqrt(2)*sqrt(pi)*exp(-w^2/8)/2",
+                "beforeLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{e^{- 2 t^{2}}\\right\\} + 2 X\\left(\\omega\\right) e^{- 3 j \\omega}",
+                "afterLatex": "\\frac{\\sqrt{2} \\sqrt{\\pi} e^{\\frac{\\left(-1\\right) \\omega^{2}}{8}}}{2} + 2 X\\left(\\omega\\right) e^{- 3 j \\omega}"
+              }
+            ],
+            "samples": [],
+            "inherited": false,
+            "status": "correct",
+            "explanation": "规则重写链与目标表达式符号一致。",
+            "beforeLatex": "2 \\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(t - 3\\right)\\right\\} + \\mathcal{F}_{t\\to \\omega}\\!\\left\\{e^{- 2 t^{2}}\\right\\}",
+            "afterLatex": "X\\left(\\omega\\right) 2 e^{- 3 j \\omega} + \\frac{\\sqrt{2} \\sqrt{\\pi}}{2} e^{\\frac{\\left(-1\\right) \\omega^{2}}{8}}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\frac{\\sqrt{2} \\sqrt{\\pi} e^{\\frac{\\left(-1\\right) \\omega^{2}}{8}}}{2} + 2 X\\left(\\omega\\right) e^{- 3 j \\omega}",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "correct",
+            "statusLabel": "已验证正确"
+          },
+          {
+            "before": "2*exp(-3*I*w)*X(w)+sqrt(pi/2)*exp(-w^2/8)",
+            "after": "2*exp(-3*I*w)/(1+I*w)+sqrt(pi/2)*exp(-w^2/8)",
+            "expected": "2*exp(-3*I*w)/(1+I*w)+sqrt(pi/2)*exp(-w^2/8)",
+            "ruleIds": [
+              "ALG"
+            ],
+            "ruleNames": [
+              "代数化简 / 已知变换对代入"
+            ],
+            "conditions": [],
+            "evidence": [
+              "符号差值化简为 0"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": false,
+            "status": "correct",
+            "explanation": "相邻两式在给定条件下符号等价。",
+            "beforeLatex": "X\\left(\\omega\\right) 2 e^{- 3 j \\omega} + \\frac{\\sqrt{2} \\sqrt{\\pi}}{2} e^{\\frac{\\left(-1\\right) \\omega^{2}}{8}}",
+            "afterLatex": "\\frac{\\sqrt{2} \\sqrt{\\pi}}{2} e^{\\frac{\\left(-1\\right) \\omega^{2}}{8}} + \\frac{2 e^{- 3 j \\omega}}{j \\omega + 1}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\frac{\\sqrt{2} \\sqrt{\\pi}}{2} e^{\\frac{\\left(-1\\right) \\omega^{2}}{8}} + \\frac{2 e^{- 3 j \\omega}}{j \\omega + 1}",
+            "expectedRocLatex": "",
+            "line": 4,
+            "localStatus": "correct",
+            "statusLabel": "已验证正确"
+          }
+        ],
+        "normalized": [
+          "FT(2*x(t - 3) + exp(-2*t^2), t, w)",
+          "2*FT(x(t - 3), t, w) + FT(exp(-2*t^2), t, w)",
+          "(sqrt(2)*sqrt(pi)*(I*w + 1)*exp(3*I*w) + 4*exp(w^2/8))*exp(-w*(w + 24*I)/8)/(2*(I*w + 1))",
+          "(sqrt(2)*sqrt(pi)*(I*w + 1)*exp(3*I*w) + 4*exp(w^2/8))*exp(-w*(w + 24*I)/8)/(2*(I*w + 1))"
+        ],
+        "ast": [
+          "FT\n  Add\n    Mul\n      2\n      x\n        Add\n          t\n          -3\n    exp\n      Mul\n        -2\n        Pow\n          t\n          2\n  t\n  w",
+          "Add\n  Mul\n    2\n    FT\n      x\n        Add\n          t\n          -3\n      t\n      w\n  FT\n    exp\n      Mul\n        -2\n        Pow\n          t\n          2\n    t\n    w",
+          "Add\n  Mul\n    Mul\n      2\n      exp\n        Mul\n          Mul\n            -3\n            I\n          w\n    X\n      w\n  Mul\n    Mul\n      1/2\n      Pow\n        2\n        1/2\n      Pow\n        pi\n        1/2\n    exp\n      Mul\n        Mul\n          -1\n          Pow\n            w\n            2\n        Pow\n          8\n          -1",
+          "Add\n  Mul\n    Mul\n      2\n      exp\n        Mul\n          Mul\n            -3\n            I\n          w\n    Pow\n      Add\n        1\n        Mul\n          I\n          w\n      -1\n  Mul\n    Mul\n      1/2\n      Pow\n        2\n        1/2\n      Pow\n        pi\n        1/2\n    exp\n      Mul\n        Mul\n          -1\n          Pow\n            w\n            2\n        Pow\n          8\n          -1"
+        ],
+        "latex": [
+          "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{2 x\\left(t - 3\\right) + e^{- 2 t^{2}}\\right\\}",
+          "2 \\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(t - 3\\right)\\right\\} + \\mathcal{F}_{t\\to \\omega}\\!\\left\\{e^{- 2 t^{2}}\\right\\}",
+          "X\\left(\\omega\\right) 2 e^{- 3 j \\omega} + \\frac{\\sqrt{2} \\sqrt{\\pi}}{2} e^{\\frac{\\left(-1\\right) \\omega^{2}}{8}}",
+          "\\frac{\\sqrt{2} \\sqrt{\\pi}}{2} e^{\\frac{\\left(-1\\right) \\omega^{2}}{8}} + \\frac{2 e^{- 3 j \\omega}}{j \\omega + 1}"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "FT(2*x(t-3)+exp(-2*t^2),t,w)",
+          "2*FT(x(t-3),t,w)+FT(exp(-2*t^2),t,w)",
+          "2*exp(-3*I*w)*X(w)+sqrt(pi/2)*exp(-w^2/8)",
+          "2*exp(-3*I*w)/(1+I*w)+sqrt(pi/2)*exp(-w^2/8)"
+        ]
+      }
+    },
+    {
+      "id": "unknown",
+      "expected": "unknown",
+      "expectedFirstError": null,
+      "actual": "unknown",
+      "actualFirstError": null,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "unknown"
+      ],
+      "localStatuses": [
+        "unknown"
+      ],
+      "result": {
+        "status": "unknown",
+        "summary": "存在尚未证实的步骤，不能判定整条推导正确。",
+        "firstError": null,
+        "firstErrorCertain": true,
+        "elapsedMs": 98.9,
+        "steps": [
+          {
+            "before": "FT(exp(I*t^2)*x(t),t,w)",
+            "after": "X(w)",
+            "expected": "",
+            "ruleIds": [],
+            "ruleNames": [],
+            "conditions": [],
+            "evidence": [
+              "未把“化简未成功”当成错误",
+              "数值一致不作为数学证明"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": false,
+            "status": "unknown",
+            "explanation": "当前规则库与有界搜索尚不能证明或否定此步，请补充条件或拆成更小步骤。",
+            "beforeLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(t\\right) e^{j t^{2}}\\right\\}",
+            "afterLatex": "X\\left(\\omega\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "unknown",
+            "statusLabel": "暂无法判断"
+          }
+        ],
+        "normalized": [
+          "FT(x(t)*exp(I*t^2), t, w)",
+          "X(w)"
+        ],
+        "ast": [
+          "FT\n  Mul\n    exp\n      Mul\n        I\n        Pow\n          t\n          2\n    x\n      t\n  t\n  w",
+          "X\n  w"
+        ],
+        "latex": [
+          "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(t\\right) e^{j t^{2}}\\right\\}",
+          "X\\left(\\omega\\right)"
+        ],
+        "rocLatex": [
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "FT(exp(I*t^2)*x(t),t,w)",
+          "X(w)"
+        ]
+      }
+    },
+    {
+      "id": "ft-modulation",
+      "expected": "wrong",
+      "expectedFirstError": 2,
+      "actual": "wrong",
+      "actualFirstError": 2,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "localStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "result": {
+        "status": "wrong",
+        "summary": "第 1 → 2 行出现首个错误",
+        "firstError": 2,
+        "firstErrorCertain": true,
+        "elapsedMs": 447.01,
+        "steps": [
+          {
+            "before": "FT(exp(3*I*t)*x(t),t,w)",
+            "after": "X(w+3)",
+            "expected": "X(w - 3)",
+            "ruleIds": [
+              "F03"
+            ],
+            "ruleNames": [
+              "频移性质"
+            ],
+            "conditions": [],
+            "evidence": [
+              "规则产生正确候选",
+              "发现可复核的函数/数值反例"
+            ],
+            "diff": {
+              "path": "root.X[0].Add[0]",
+              "before": "3",
+              "after": "-3",
+              "beforeLatex": "3",
+              "afterLatex": "-3"
+            },
+            "trace": [
+              {
+                "ruleId": "F03",
+                "before": "FT(x(t)*exp((3*I)*t), t, w)",
+                "after": "X(w - 3)",
+                "beforeLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(t\\right) e^{3 j t}\\right\\}",
+                "afterLatex": "X\\left(\\omega - 3\\right)"
+              }
+            ],
+            "samples": [
+              {
+                "at": "w=1/3",
+                "expected": "(0.1232876712328767+0.3287671232876712j)",
+                "actual": "(0.08256880733944955-0.27522935779816515j)",
+                "error": 0.6053674710792153,
+                "difference": "(0.040718863893427173+0.6039964810858364j)"
+              }
+            ],
+            "inherited": false,
+            "status": "wrong",
+            "explanation": "调制对应频谱平移，请核对频移方向。",
+            "beforeLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(t\\right) e^{3 j t}\\right\\}",
+            "afterLatex": "X\\left(\\omega + 3\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "X\\left(\\omega - 3\\right)",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "wrong",
+            "statusLabel": "已确认错误"
+          },
+          {
+            "before": "X(w+3)",
+            "after": "1/(1+I*(w+3))",
+            "expected": "1/(1+I*(w+3))",
+            "ruleIds": [
+              "ALG"
+            ],
+            "ruleNames": [
+              "代数化简 / 已知变换对代入"
+            ],
+            "conditions": [],
+            "evidence": [
+              "符号差值化简为 0"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": true,
+            "status": "correct",
+            "explanation": "相邻两式在给定条件下符号等价。",
+            "beforeLatex": "X\\left(\\omega + 3\\right)",
+            "afterLatex": "\\frac{1}{j \\left(\\omega + 3\\right) + 1}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\frac{1}{j \\left(\\omega + 3\\right) + 1}",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "correct",
+            "statusLabel": "局部正确 · 继承前错"
+          }
+        ],
+        "normalized": [
+          "FT(x(t)*exp(3*I*t), t, w)",
+          "1/(I*(w + 3) + 1)",
+          "1/(I*(w + 3) + 1)"
+        ],
+        "ast": [
+          "FT\n  Mul\n    exp\n      Mul\n        Mul\n          3\n          I\n        t\n    x\n      t\n  t\n  w",
+          "X\n  Add\n    w\n    3",
+          "Mul\n  1\n  Pow\n    Add\n      1\n      Mul\n        I\n        Add\n          w\n          3\n    -1"
+        ],
+        "latex": [
+          "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{x\\left(t\\right) e^{3 j t}\\right\\}",
+          "X\\left(\\omega + 3\\right)",
+          "\\frac{1}{j \\left(\\omega + 3\\right) + 1}"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "FT(exp(3*I*t)*x(t),t,w)",
+          "X(w - 3)",
+          "1/(1+I*(w+3))"
+        ]
+      }
+    },
+    {
+      "id": "ft-product",
+      "expected": "wrong",
+      "expectedFirstError": 2,
+      "actual": "wrong",
+      "actualFirstError": 2,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "localStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "result": {
+        "status": "wrong",
+        "summary": "第 1 → 2 行出现首个错误",
+        "firstError": 2,
+        "firstErrorCertain": true,
+        "elapsedMs": 481.74,
+        "steps": [
+          {
+            "before": "FT(x(t)*h(t),t,w)",
+            "after": "Conv(X(w),H(w),w)",
+            "expected": "Conv(X(w), H(w), w)/(2*pi)",
+            "ruleIds": [
+              "F09"
+            ],
+            "ruleNames": [
+              "时域乘积"
+            ],
+            "conditions": [],
+            "evidence": [
+              "规则产生正确候选",
+              "发现可复核的函数/数值反例"
+            ],
+            "diff": {
+              "path": "root",
+              "before": "Conv(X(w), H(w), w)",
+              "after": "Conv(X(w), H(w), w)/(2*pi)",
+              "beforeLatex": "\\left[X\\ast H\\right]\\left(\\omega\\right)",
+              "afterLatex": "\\frac{\\left[X\\ast H\\right]\\left(\\omega\\right)}{2 \\pi}"
+            },
+            "trace": [
+              {
+                "ruleId": "F09",
+                "before": "FT(h(t)*x(t), t, w)",
+                "after": "Conv(X(w), H(w), w)/(2*pi)",
+                "beforeLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{h\\left(t\\right) x\\left(t\\right)\\right\\}",
+                "afterLatex": "\\frac{\\left[X\\ast H\\right]\\left(\\omega\\right)}{2 \\pi}"
+              }
+            ],
+            "samples": [
+              {
+                "at": "w=1/3",
+                "expected": "(0.12110291422277442+0j)",
+                "actual": "(0.760912051301166+0j)",
+                "error": 0.6398091370783916,
+                "difference": "(-0.6398091370783916+0j)",
+                "model": "可构造反例：第 k 个时域信号/频谱取 exp(-k*(v-k/3)^2)；s 域取符合已给初值的稳定有理函数，z 域取 z/(z-1/(k+2))。",
+                "witnessExpected": "sqrt(3)*exp(-2*w^2/3 + 4*w/3 - 2/3)/(6*sqrt(pi))",
+                "witnessActual": "sqrt(3)*sqrt(pi)*exp(-2*w^2/3 + 4*w/3 - 2/3)/3"
+              }
+            ],
+            "inherited": false,
+            "status": "wrong",
+            "explanation": "时域相乘对应频域卷积，角频率约定下必须带 1/(2*pi)。",
+            "beforeLatex": "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{h\\left(t\\right) x\\left(t\\right)\\right\\}",
+            "afterLatex": "\\left[X\\ast H\\right]\\left(\\omega\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\frac{\\left[X\\ast H\\right]\\left(\\omega\\right)}{2 \\pi}",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "wrong",
+            "statusLabel": "已确认错误"
+          },
+          {
+            "before": "Conv(X(w),H(w),w)",
+            "after": "Conv(H(w),X(w),w)",
+            "expected": "Conv(H(w), X(w), w)",
+            "ruleIds": [
+              "C01"
+            ],
+            "ruleNames": [
+              "卷积交换律"
+            ],
+            "conditions": [],
+            "evidence": [
+              "已执行 1 次规则重写",
+              "候选与目标的符号差值为 0"
+            ],
+            "diff": {},
+            "trace": [
+              {
+                "ruleId": "C01",
+                "before": "Conv(X(w), H(w), w)",
+                "after": "Conv(H(w), X(w), w)",
+                "beforeLatex": "\\left[X\\ast H\\right]\\left(\\omega\\right)",
+                "afterLatex": "\\left[H\\ast X\\right]\\left(\\omega\\right)"
+              }
+            ],
+            "samples": [],
+            "inherited": true,
+            "status": "correct",
+            "explanation": "规则重写链与目标表达式符号一致。",
+            "beforeLatex": "\\left[X\\ast H\\right]\\left(\\omega\\right)",
+            "afterLatex": "\\left[H\\ast X\\right]\\left(\\omega\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\left[H\\ast X\\right]\\left(\\omega\\right)",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "correct",
+            "statusLabel": "局部正确 · 继承前错"
+          }
+        ],
+        "normalized": [
+          "FT(h(t)*x(t), t, w)",
+          "Conv(X(w), H(w), w)",
+          "Conv(H(w), X(w), w)"
+        ],
+        "ast": [
+          "FT\n  Mul\n    x\n      t\n    h\n      t\n  t\n  w",
+          "Conv\n  X\n    w\n  H\n    w\n  w",
+          "Conv\n  H\n    w\n  X\n    w\n  w"
+        ],
+        "latex": [
+          "\\mathcal{F}_{t\\to \\omega}\\!\\left\\{h\\left(t\\right) x\\left(t\\right)\\right\\}",
+          "\\left[X\\ast H\\right]\\left(\\omega\\right)",
+          "\\left[H\\ast X\\right]\\left(\\omega\\right)"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "FT(x(t)*h(t),t,w)",
+          "Conv(X(w), H(w), w)/(2*pi)",
+          "Conv(H(w),X(w),w)"
+        ]
+      }
+    },
+    {
+      "id": "lt-initial",
+      "expected": "wrong",
+      "expectedFirstError": 2,
+      "actual": "wrong",
+      "actualFirstError": 2,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "wrong",
+        "correct",
+        "correct"
+      ],
+      "localStatuses": [
+        "wrong",
+        "correct",
+        "correct"
+      ],
+      "result": {
+        "status": "wrong",
+        "summary": "第 1 → 2 行出现首个错误",
+        "firstError": 2,
+        "firstErrorCertain": true,
+        "elapsedMs": 264.7,
+        "steps": [
+          {
+            "before": "LT(D(x(t),t),t,s)",
+            "after": "s*X(s)",
+            "expected": "s*X(s) - 2",
+            "ruleIds": [
+              "L02"
+            ],
+            "ruleNames": [
+              "一阶导数与初值"
+            ],
+            "conditions": [],
+            "evidence": [
+              "规则产生正确候选",
+              "发现可复核的函数/数值反例"
+            ],
+            "diff": {
+              "path": "root",
+              "before": "s*X(s)",
+              "after": "s*X(s) - 2",
+              "beforeLatex": "s X\\left(s\\right)",
+              "afterLatex": "s X\\left(s\\right) - 2"
+            },
+            "trace": [
+              {
+                "ruleId": "L02",
+                "before": "LT(D(x(t), t), t, s)",
+                "after": "s*X(s) - 2",
+                "beforeLatex": "\\mathcal{L}_{0^{-}}\\!\\left\\{\\frac{\\mathrm{d} x\\left(t\\right)}{\\mathrm{d}t}\\right\\}\\!\\left(s\\right)",
+                "afterLatex": "s X\\left(s\\right) - 2"
+              }
+            ],
+            "samples": [
+              {
+                "at": "s=16/3 + I/3",
+                "expected": "(-0.3149171270718232+0.016574585635359115j)",
+                "actual": "(1.6850828729281768+0.016574585635359115j)",
+                "error": 2.0,
+                "difference": "(-2+0j)"
+              }
+            ],
+            "inherited": false,
+            "status": "wrong",
+            "explanation": "单边拉普拉斯导数公式包含 x(0-) 初值项。",
+            "beforeLatex": "\\mathcal{L}_{0^{-}}\\!\\left\\{\\frac{\\mathrm{d} x\\left(t\\right)}{\\mathrm{d}t}\\right\\}\\!\\left(s\\right)",
+            "afterLatex": "s X\\left(s\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "s X\\left(s\\right) - 2",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "wrong",
+            "statusLabel": "已确认错误"
+          },
+          {
+            "before": "s*X(s)",
+            "after": "2*s/(s+1)",
+            "expected": "2*s/(s+1)",
+            "ruleIds": [
+              "ALG"
+            ],
+            "ruleNames": [
+              "代数化简 / 已知变换对代入"
+            ],
+            "conditions": [],
+            "evidence": [
+              "符号差值化简为 0"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": true,
+            "status": "correct",
+            "explanation": "相邻两式在给定条件下符号等价。",
+            "beforeLatex": "s X\\left(s\\right)",
+            "afterLatex": "\\frac{2 s}{s + 1}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\frac{2 s}{s + 1}",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "correct",
+            "statusLabel": "局部正确 · 继承前错"
+          },
+          {
+            "before": "2*s/(s+1)",
+            "after": "2-2/(s+1)",
+            "expected": "2-2/(s+1)",
+            "ruleIds": [
+              "ALG"
+            ],
+            "ruleNames": [
+              "代数化简 / 已知变换对代入"
+            ],
+            "conditions": [],
+            "evidence": [
+              "符号差值化简为 0"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": true,
+            "status": "correct",
+            "explanation": "相邻两式在给定条件下符号等价。",
+            "beforeLatex": "\\frac{2 s}{s + 1}",
+            "afterLatex": "2 - \\frac{2}{s + 1}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "2 - \\frac{2}{s + 1}",
+            "expectedRocLatex": "",
+            "line": 4,
+            "localStatus": "correct",
+            "statusLabel": "局部正确 · 继承前错"
+          }
+        ],
+        "normalized": [
+          "LT(Derivative(x(t), t), t, s)",
+          "2*s/(s + 1)",
+          "2*s/(s + 1)",
+          "2*s/(s + 1)"
+        ],
+        "ast": [
+          "LT\n  D\n    x\n      t\n    t\n  t\n  s",
+          "Mul\n  s\n  X\n    s",
+          "Mul\n  Mul\n    2\n    s\n  Pow\n    Add\n      s\n      1\n    -1",
+          "Add\n  2\n  Mul\n    -2\n    Pow\n      Add\n        s\n        1\n      -1"
+        ],
+        "latex": [
+          "\\mathcal{L}_{0^{-}}\\!\\left\\{\\frac{\\mathrm{d} x\\left(t\\right)}{\\mathrm{d}t}\\right\\}\\!\\left(s\\right)",
+          "s X\\left(s\\right)",
+          "\\frac{2 s}{s + 1}",
+          "2 - \\frac{2}{s + 1}"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "LT(D(x(t),t),t,s)",
+          "s*X(s) - 2",
+          "2*s/(s+1)",
+          "2-2/(s+1)"
+        ]
+      }
+    },
+    {
+      "id": "lt-correct",
+      "expected": "correct",
+      "expectedFirstError": null,
+      "actual": "correct",
+      "actualFirstError": null,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "correct"
+      ],
+      "localStatuses": [
+        "correct"
+      ],
+      "result": {
+        "status": "correct",
+        "summary": "全部相邻步骤已通过验证。",
+        "firstError": null,
+        "firstErrorCertain": true,
+        "elapsedMs": 112.86,
+        "steps": [
+          {
+            "before": "LT(exp(-2*t)*u(t),t,s)",
+            "after": "1/(s+2); ROC: re(s)>-2",
+            "expected": "1/(s + 2); ROC: re(s)>-2",
+            "ruleIds": [
+              "L10"
+            ],
+            "ruleNames": [
+              "因果指数变换对"
+            ],
+            "conditions": [
+              "re(s)>-2"
+            ],
+            "evidence": [
+              "已执行 1 次规则重写",
+              "候选与目标的符号差值为 0"
+            ],
+            "diff": {},
+            "trace": [
+              {
+                "ruleId": "L10",
+                "before": "LT(u(t)*exp(-2*t), t, s)",
+                "after": "1/(s + 2)",
+                "beforeLatex": "\\mathcal{L}_{0^{-}}\\!\\left\\{u\\left(t\\right) e^{- 2 t}\\right\\}\\!\\left(s\\right)",
+                "afterLatex": "\\frac{1}{s + 2}"
+              }
+            ],
+            "samples": [],
+            "inherited": false,
+            "status": "correct",
+            "explanation": "规则重写链与目标表达式符号一致。",
+            "beforeLatex": "\\mathcal{L}_{0^{-}}\\!\\left\\{u\\left(t\\right) e^{- 2 t}\\right\\}\\!\\left(s\\right)",
+            "afterLatex": "\\frac{1}{s + 2}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "\\operatorname{Re}\\!\\left(s\\right) > -2",
+            "expectedLatex": "\\frac{1}{s + 2}",
+            "expectedRocLatex": "\\operatorname{Re}\\!\\left(s\\right) > -2",
+            "line": 2,
+            "localStatus": "correct",
+            "statusLabel": "已验证正确"
+          }
+        ],
+        "normalized": [
+          "LT(u(t)*exp(-2*t), t, s)",
+          "1/(s + 2)"
+        ],
+        "ast": [
+          "LT\n  Mul\n    exp\n      Mul\n        -2\n        t\n    u\n      t\n  t\n  s",
+          "Mul\n  1\n  Pow\n    Add\n      s\n      2\n    -1"
+        ],
+        "latex": [
+          "\\mathcal{L}_{0^{-}}\\!\\left\\{u\\left(t\\right) e^{- 2 t}\\right\\}\\!\\left(s\\right)",
+          "\\frac{1}{s + 2}"
+        ],
+        "rocLatex": [
+          "",
+          "\\operatorname{Re}\\!\\left(s\\right) > -2"
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "LT(exp(-2*t)*u(t),t,s)",
+          "1/(s+2); ROC: re(s)>-2"
+        ]
+      }
+    },
+    {
+      "id": "lt-second",
+      "expected": "wrong",
+      "expectedFirstError": 3,
+      "actual": "wrong",
+      "actualFirstError": 3,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "correct",
+        "wrong",
+        "correct"
+      ],
+      "localStatuses": [
+        "correct",
+        "wrong",
+        "correct"
+      ],
+      "result": {
+        "status": "wrong",
+        "summary": "第 2 → 3 行出现首个错误",
+        "firstError": 3,
+        "firstErrorCertain": true,
+        "elapsedMs": 106.92,
+        "steps": [
+          {
+            "before": "LT(D(x(t),t,2),t,s)",
+            "after": "s^2*X(s)-s*x0-x1",
+            "expected": "s^2*X(s) - 2*s + 1",
+            "ruleIds": [
+              "L03"
+            ],
+            "ruleNames": [
+              "二阶导数与初值"
+            ],
+            "conditions": [],
+            "evidence": [
+              "已执行 1 次规则重写",
+              "候选与目标的符号差值为 0"
+            ],
+            "diff": {},
+            "trace": [
+              {
+                "ruleId": "L03",
+                "before": "LT(D(x(t), t, 2), t, s)",
+                "after": "s^2*X(s) - 2*s + 1",
+                "beforeLatex": "\\mathcal{L}_{0^{-}}\\!\\left\\{\\frac{\\mathrm{d}^{2} x\\left(t\\right)}{\\mathrm{d}t^{2}}\\right\\}\\!\\left(s\\right)",
+                "afterLatex": "\\left(s^{2} X\\left(s\\right) - 2 s\\right) + 1"
+              }
+            ],
+            "samples": [],
+            "inherited": false,
+            "status": "correct",
+            "explanation": "规则重写链与目标表达式符号一致。",
+            "beforeLatex": "\\mathcal{L}_{0^{-}}\\!\\left\\{\\frac{\\mathrm{d}^{2} x\\left(t\\right)}{\\mathrm{d}t^{2}}\\right\\}\\!\\left(s\\right)",
+            "afterLatex": "\\left(s^{2} X\\left(s\\right) - s 2\\right) + 1",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\left(s^{2} X\\left(s\\right) - 2 s\\right) + 1",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "correct",
+            "statusLabel": "已验证正确"
+          },
+          {
+            "before": "s^2*X(s)-s*x0-x1",
+            "after": "s^2*X(s)-2*s-1",
+            "expected": "",
+            "ruleIds": [],
+            "ruleNames": [],
+            "conditions": [],
+            "evidence": [
+              "40位精度求值发现不一致"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [
+              {
+                "at": "s=16/3 + I/3",
+                "expected": "(s^2*X(s) - 1*s*2) + 1",
+                "actual": "(s^2*X(s) - 2*s) - 1",
+                "error": 2.0,
+                "difference": "(2+0j)"
+              }
+            ],
+            "inherited": false,
+            "status": "wrong",
+            "explanation": "高精度代入发现反例，两式不能作为恒等式互换。",
+            "beforeLatex": "\\left(s^{2} X\\left(s\\right) - s 2\\right) + 1",
+            "afterLatex": "\\left(s^{2} X\\left(s\\right) - 2 s\\right) - 1",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "wrong",
+            "statusLabel": "已确认错误"
+          },
+          {
+            "before": "s^2*X(s)-2*s-1",
+            "after": "s*(s*X(s)-2)-1",
+            "expected": "s*(s*X(s)-2)-1",
+            "ruleIds": [
+              "ALG"
+            ],
+            "ruleNames": [
+              "代数化简 / 已知变换对代入"
+            ],
+            "conditions": [],
+            "evidence": [
+              "符号差值化简为 0"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": true,
+            "status": "correct",
+            "explanation": "相邻两式在给定条件下符号等价。",
+            "beforeLatex": "\\left(s^{2} X\\left(s\\right) - 2 s\\right) - 1",
+            "afterLatex": "s \\left(s X\\left(s\\right) - 2\\right) - 1",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "s \\left(s X\\left(s\\right) - 2\\right) - 1",
+            "expectedRocLatex": "",
+            "line": 4,
+            "localStatus": "correct",
+            "statusLabel": "局部正确 · 继承前错"
+          }
+        ],
+        "normalized": [
+          "LT(Derivative(x(t), (t, 2)), t, s)",
+          "s^2*X(s) - 2*s + 1",
+          "s^2*X(s) - 2*s - 1",
+          "s*(s*X(s) - 2) - 1"
+        ],
+        "ast": [
+          "LT\n  D\n    x\n      t\n    t\n    2\n  t\n  s",
+          "Add\n  Add\n    Mul\n      Pow\n        s\n        2\n      X\n        s\n    Mul\n      -1\n      s\n      2\n  1",
+          "Add\n  Add\n    Mul\n      Pow\n        s\n        2\n      X\n        s\n    Mul\n      -2\n      s\n  -1",
+          "Add\n  Mul\n    s\n    Add\n      Mul\n        s\n        X\n          s\n      -2\n  -1"
+        ],
+        "latex": [
+          "\\mathcal{L}_{0^{-}}\\!\\left\\{\\frac{\\mathrm{d}^{2} x\\left(t\\right)}{\\mathrm{d}t^{2}}\\right\\}\\!\\left(s\\right)",
+          "\\left(s^{2} X\\left(s\\right) - s 2\\right) + 1",
+          "\\left(s^{2} X\\left(s\\right) - 2 s\\right) - 1",
+          "s \\left(s X\\left(s\\right) - 2\\right) - 1"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "LT(D(x(t),t,2),t,s)",
+          "s^2*X(s)-s*x0-x1",
+          "s^2*X(s)-2*s-1",
+          "s*(s*X(s)-2)-1"
+        ]
+      }
+    },
+    {
+      "id": "lt-delay-condition",
+      "expected": "unknown",
+      "expectedFirstError": null,
+      "actual": "unknown",
+      "actualFirstError": null,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "unknown",
+        "correct"
+      ],
+      "localStatuses": [
+        "unknown",
+        "correct"
+      ],
+      "result": {
+        "status": "unknown",
+        "summary": "存在尚未证实的步骤，不能判定整条推导正确。",
+        "firstError": null,
+        "firstErrorCertain": true,
+        "elapsedMs": 197.66,
+        "steps": [
+          {
+            "before": "LT(x(t-2),t,s)",
+            "after": "exp(-2*s)*X(s)",
+            "expected": "",
+            "ruleIds": [],
+            "ruleNames": [],
+            "conditions": [],
+            "evidence": [
+              "未把“化简未成功”当成错误",
+              "数值一致不作为数学证明"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": false,
+            "status": "unknown",
+            "explanation": "当前规则库与有界搜索尚不能证明或否定此步，请补充条件或拆成更小步骤。",
+            "beforeLatex": "\\mathcal{L}_{0^{-}}\\!\\left\\{x\\left(t - 2\\right)\\right\\}\\!\\left(s\\right)",
+            "afterLatex": "X\\left(s\\right) e^{- 2 s}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "unknown",
+            "statusLabel": "暂无法判断"
+          },
+          {
+            "before": "exp(-2*s)*X(s)",
+            "after": "X(s)/exp(2*s)",
+            "expected": "X(s)/exp(2*s)",
+            "ruleIds": [
+              "ALG"
+            ],
+            "ruleNames": [
+              "代数化简 / 已知变换对代入"
+            ],
+            "conditions": [],
+            "evidence": [
+              "符号差值化简为 0"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": false,
+            "status": "correct",
+            "explanation": "相邻两式在给定条件下符号等价。",
+            "beforeLatex": "X\\left(s\\right) e^{- 2 s}",
+            "afterLatex": "\\frac{X\\left(s\\right)}{e^{2 s}}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\frac{X\\left(s\\right)}{e^{2 s}}",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "correct",
+            "statusLabel": "已验证正确"
+          }
+        ],
+        "normalized": [
+          "LT(x(t - 2), t, s)",
+          "X(s)*exp(-2*s)",
+          "X(s)*exp(-2*s)"
+        ],
+        "ast": [
+          "LT\n  x\n    Add\n      t\n      -2\n  t\n  s",
+          "Mul\n  exp\n    Mul\n      -2\n      s\n  X\n    s",
+          "Mul\n  X\n    s\n  Pow\n    exp\n      Mul\n        2\n        s\n    -1"
+        ],
+        "latex": [
+          "\\mathcal{L}_{0^{-}}\\!\\left\\{x\\left(t - 2\\right)\\right\\}\\!\\left(s\\right)",
+          "X\\left(s\\right) e^{- 2 s}",
+          "\\frac{X\\left(s\\right)}{e^{2 s}}"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "LT(x(t-2),t,s)",
+          "exp(-2*s)*X(s)",
+          "X(s)/exp(2*s)"
+        ]
+      }
+    },
+    {
+      "id": "lt-time",
+      "expected": "correct",
+      "expectedFirstError": null,
+      "actual": "correct",
+      "actualFirstError": null,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "correct",
+        "correct"
+      ],
+      "localStatuses": [
+        "correct",
+        "correct"
+      ],
+      "result": {
+        "status": "correct",
+        "summary": "全部相邻步骤已通过验证。",
+        "firstError": null,
+        "firstErrorCertain": true,
+        "elapsedMs": 169.23,
+        "steps": [
+          {
+            "before": "LT(t*x(t),t,s)",
+            "after": "-D(X(s),s)",
+            "expected": "-D(X(s), s)",
+            "ruleIds": [
+              "L04"
+            ],
+            "ruleNames": [
+              "乘以时间"
+            ],
+            "conditions": [],
+            "evidence": [
+              "已执行 1 次规则重写",
+              "候选与目标的符号差值为 0"
+            ],
+            "diff": {},
+            "trace": [
+              {
+                "ruleId": "L04",
+                "before": "LT(t*x(t), t, s)",
+                "after": "-D(X(s), s)",
+                "beforeLatex": "\\mathcal{L}_{0^{-}}\\!\\left\\{t x\\left(t\\right)\\right\\}\\!\\left(s\\right)",
+                "afterLatex": "- \\frac{\\mathrm{d} X\\left(s\\right)}{\\mathrm{d}s}"
+              }
+            ],
+            "samples": [],
+            "inherited": false,
+            "status": "correct",
+            "explanation": "规则重写链与目标表达式符号一致。",
+            "beforeLatex": "\\mathcal{L}_{0^{-}}\\!\\left\\{t x\\left(t\\right)\\right\\}\\!\\left(s\\right)",
+            "afterLatex": "- \\frac{\\mathrm{d} X\\left(s\\right)}{\\mathrm{d}s}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "- \\frac{\\mathrm{d} X\\left(s\\right)}{\\mathrm{d}s}",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "correct",
+            "statusLabel": "已验证正确"
+          },
+          {
+            "before": "-D(X(s),s)",
+            "after": "1/(s+1)^2",
+            "expected": "1/(s+1)^2",
+            "ruleIds": [
+              "ALG"
+            ],
+            "ruleNames": [
+              "代数化简 / 已知变换对代入"
+            ],
+            "conditions": [],
+            "evidence": [
+              "符号差值化简为 0"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": false,
+            "status": "correct",
+            "explanation": "相邻两式在给定条件下符号等价。",
+            "beforeLatex": "- \\frac{\\mathrm{d} X\\left(s\\right)}{\\mathrm{d}s}",
+            "afterLatex": "\\frac{1}{\\left(s + 1\\right)^{2}}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\frac{1}{\\left(s + 1\\right)^{2}}",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "correct",
+            "statusLabel": "已验证正确"
+          }
+        ],
+        "normalized": [
+          "LT(t*x(t), t, s)",
+          "(s + 1)^(-2)",
+          "(s + 1)^(-2)"
+        ],
+        "ast": [
+          "LT\n  Mul\n    t\n    x\n      t\n  t\n  s",
+          "Mul\n  -1\n  D\n    X\n      s\n    s",
+          "Mul\n  1\n  Pow\n    Pow\n      Add\n        s\n        1\n      2\n    -1"
+        ],
+        "latex": [
+          "\\mathcal{L}_{0^{-}}\\!\\left\\{t x\\left(t\\right)\\right\\}\\!\\left(s\\right)",
+          "- \\frac{\\mathrm{d} X\\left(s\\right)}{\\mathrm{d}s}",
+          "\\frac{1}{\\left(s + 1\\right)^{2}}"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "LT(t*x(t),t,s)",
+          "-D(X(s),s)",
+          "1/(s+1)^2"
+        ]
+      }
+    },
+    {
+      "id": "lt-roc-direction",
+      "expected": "wrong",
+      "expectedFirstError": 2,
+      "actual": "wrong",
+      "actualFirstError": 2,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "wrong"
+      ],
+      "localStatuses": [
+        "wrong"
+      ],
+      "result": {
+        "status": "wrong",
+        "summary": "第 1 → 2 行出现首个错误",
+        "firstError": 2,
+        "firstErrorCertain": true,
+        "elapsedMs": 27.57,
+        "steps": [
+          {
+            "before": "LT(u(t),t,s)",
+            "after": "1/s; ROC: re(s)<0",
+            "expected": "1/s; ROC: re(s)>0",
+            "ruleIds": [
+              "L09"
+            ],
+            "ruleNames": [
+              "单位阶跃变换对"
+            ],
+            "conditions": [
+              "re(s)>0"
+            ],
+            "evidence": [
+              "已执行 1 次规则重写",
+              "候选与目标的符号差值为 0"
+            ],
+            "diff": {
+              "path": "ROC",
+              "before": "re(s)<0",
+              "after": "re(s)>0"
+            },
+            "trace": [
+              {
+                "ruleId": "L09",
+                "before": "LT(u(t), t, s)",
+                "after": "1/s",
+                "beforeLatex": "\\mathcal{L}_{0^{-}}\\!\\left\\{u\\left(t\\right)\\right\\}\\!\\left(s\\right)",
+                "afterLatex": "\\frac{1}{s}"
+              }
+            ],
+            "samples": [],
+            "inherited": false,
+            "status": "wrong",
+            "explanation": "代数表达式正确，但收敛域方向或边界不正确。",
+            "beforeLatex": "\\mathcal{L}_{0^{-}}\\!\\left\\{u\\left(t\\right)\\right\\}\\!\\left(s\\right)",
+            "afterLatex": "\\frac{1}{s}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "\\operatorname{Re}\\!\\left(s\\right) < 0",
+            "expectedLatex": "\\frac{1}{s}",
+            "expectedRocLatex": "\\operatorname{Re}\\!\\left(s\\right) > 0",
+            "line": 2,
+            "localStatus": "wrong",
+            "statusLabel": "已确认错误"
+          }
+        ],
+        "normalized": [
+          "LT(u(t), t, s)",
+          "1/s"
+        ],
+        "ast": [
+          "LT\n  u\n    t\n  t\n  s",
+          "Mul\n  1\n  Pow\n    s\n    -1"
+        ],
+        "latex": [
+          "\\mathcal{L}_{0^{-}}\\!\\left\\{u\\left(t\\right)\\right\\}\\!\\left(s\\right)",
+          "\\frac{1}{s}"
+        ],
+        "rocLatex": [
+          "",
+          "\\operatorname{Re}\\!\\left(s\\right) < 0"
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "LT(u(t),t,s)",
+          "1/s; ROC: re(s)>0"
+        ]
+      }
+    },
+    {
+      "id": "z-roc",
+      "expected": "incomplete",
+      "expectedFirstError": null,
+      "actual": "incomplete",
+      "actualFirstError": null,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "incomplete"
+      ],
+      "localStatuses": [
+        "incomplete"
+      ],
+      "result": {
+        "status": "incomplete",
+        "summary": "代数推导成立，但收敛域信息不完整。",
+        "firstError": null,
+        "firstErrorCertain": true,
+        "elapsedMs": 83.23,
+        "steps": [
+          {
+            "before": "ZT((1/2)^n*u(n),n,z)",
+            "after": "z/(z-1/2)",
+            "expected": "z/(z - 1/2); ROC: abs(z)>1/2",
+            "ruleIds": [
+              "Z09"
+            ],
+            "ruleNames": [
+              "右边指数序列"
+            ],
+            "conditions": [
+              "abs(z)>1/2"
+            ],
+            "evidence": [
+              "已执行 1 次规则重写",
+              "候选与目标的符号差值为 0"
+            ],
+            "diff": {
+              "path": "ROC",
+              "before": "未填写",
+              "after": "abs(z)>1/2"
+            },
+            "trace": [
+              {
+                "ruleId": "Z09",
+                "before": "ZT((1/2)^n*u(n), n, z)",
+                "after": "z/(z - 1/2)",
+                "beforeLatex": "\\mathcal{Z}\\!\\left\\{\\left(\\frac{1}{2}\\right)^{n} u\\left[n\\right]\\right\\}\\!\\left(z\\right)",
+                "afterLatex": "\\frac{z}{z - \\frac{1}{2}}"
+              }
+            ],
+            "samples": [],
+            "inherited": false,
+            "status": "incomplete",
+            "explanation": "代数表达式正确，但缺少收敛域。变换结果必须包含 ROC。",
+            "beforeLatex": "\\mathcal{Z}\\!\\left\\{\\left(\\frac{1}{2}\\right)^{n} u\\left[n\\right]\\right\\}\\!\\left(z\\right)",
+            "afterLatex": "\\frac{z}{z - \\frac{1}{2}}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\frac{z}{z - \\frac{1}{2}}",
+            "expectedRocLatex": "\\left|z\\right| > \\frac{1}{2}",
+            "line": 2,
+            "localStatus": "incomplete",
+            "statusLabel": "缺少收敛域"
+          }
+        ],
+        "normalized": [
+          "ZT(u(n)/2^n, n, z)",
+          "2*z/(2*z - 1)"
+        ],
+        "ast": [
+          "ZT\n  Mul\n    Pow\n      Mul\n        1\n        Pow\n          2\n          -1\n      n\n    u\n      n\n  n\n  z",
+          "Mul\n  z\n  Pow\n    Add\n      z\n      Mul\n        -1\n        Pow\n          2\n          -1\n    -1"
+        ],
+        "latex": [
+          "\\mathcal{Z}\\!\\left\\{\\left(\\frac{1}{2}\\right)^{n} u\\left[n\\right]\\right\\}\\!\\left(z\\right)",
+          "\\frac{z}{z - \\frac{1}{2}}"
+        ],
+        "rocLatex": [
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "ZT((1/2)^n*u(n),n,z)",
+          "z/(z-1/2)"
+        ]
+      }
+    },
+    {
+      "id": "z-left",
+      "expected": "correct",
+      "expectedFirstError": null,
+      "actual": "correct",
+      "actualFirstError": null,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "correct"
+      ],
+      "localStatuses": [
+        "correct"
+      ],
+      "result": {
+        "status": "correct",
+        "summary": "全部相邻步骤已通过验证。",
+        "firstError": null,
+        "firstErrorCertain": true,
+        "elapsedMs": 108.21,
+        "steps": [
+          {
+            "before": "ZT(-(1/2)^n*u(-n-1),n,z)",
+            "after": "z/(z-1/2); ROC: abs(z)<1/2",
+            "expected": "z/(z - 1/2); ROC: abs(z)<1/2",
+            "ruleIds": [
+              "Z10"
+            ],
+            "ruleNames": [
+              "左边指数序列"
+            ],
+            "conditions": [
+              "abs(z)<1/2"
+            ],
+            "evidence": [
+              "已执行 1 次规则重写",
+              "候选与目标的符号差值为 0"
+            ],
+            "diff": {},
+            "trace": [
+              {
+                "ruleId": "Z10",
+                "before": "ZT((-(1/2)^n)*u(-n - 1), n, z)",
+                "after": "z/(z - 1/2)",
+                "beforeLatex": "\\mathcal{Z}\\!\\left\\{- \\left(\\frac{1}{2}\\right)^{n} u\\left[- n - 1\\right]\\right\\}\\!\\left(z\\right)",
+                "afterLatex": "\\frac{z}{z - \\frac{1}{2}}"
+              }
+            ],
+            "samples": [],
+            "inherited": false,
+            "status": "correct",
+            "explanation": "规则重写链与目标表达式符号一致。",
+            "beforeLatex": "\\mathcal{Z}\\!\\left\\{- \\left(\\frac{1}{2}\\right)^{n} u\\left[- n - 1\\right]\\right\\}\\!\\left(z\\right)",
+            "afterLatex": "\\frac{z}{z - \\frac{1}{2}}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "\\left|z\\right| < \\frac{1}{2}",
+            "expectedLatex": "\\frac{z}{z - \\frac{1}{2}}",
+            "expectedRocLatex": "\\left|z\\right| < \\frac{1}{2}",
+            "line": 2,
+            "localStatus": "correct",
+            "statusLabel": "已验证正确"
+          }
+        ],
+        "normalized": [
+          "ZT(-u(-n - 1)/2^n, n, z)",
+          "2*z/(2*z - 1)"
+        ],
+        "ast": [
+          "ZT\n  Mul\n    Mul\n      -1\n      Pow\n        Mul\n          1\n          Pow\n            2\n            -1\n        n\n    u\n      Add\n        Mul\n          -1\n          n\n        -1\n  n\n  z",
+          "Mul\n  z\n  Pow\n    Add\n      z\n      Mul\n        -1\n        Pow\n          2\n          -1\n    -1"
+        ],
+        "latex": [
+          "\\mathcal{Z}\\!\\left\\{- \\left(\\frac{1}{2}\\right)^{n} u\\left[- n - 1\\right]\\right\\}\\!\\left(z\\right)",
+          "\\frac{z}{z - \\frac{1}{2}}"
+        ],
+        "rocLatex": [
+          "",
+          "\\left|z\\right| < \\frac{1}{2}"
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "ZT(-(1/2)^n*u(-n-1),n,z)",
+          "z/(z-1/2); ROC: abs(z)<1/2"
+        ]
+      }
+    },
+    {
+      "id": "z-delay",
+      "expected": "wrong",
+      "expectedFirstError": 2,
+      "actual": "wrong",
+      "actualFirstError": 2,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "localStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "result": {
+        "status": "wrong",
+        "summary": "第 1 → 2 行出现首个错误",
+        "firstError": 2,
+        "firstErrorCertain": true,
+        "elapsedMs": 250.48,
+        "steps": [
+          {
+            "before": "ZT(x(n-2),n,z)",
+            "after": "z^2*X(z)",
+            "expected": "X(z)/z^2",
+            "ruleIds": [
+              "Z02"
+            ],
+            "ruleNames": [
+              "序列移位"
+            ],
+            "conditions": [],
+            "evidence": [
+              "规则产生正确候选",
+              "发现可复核的函数/数值反例"
+            ],
+            "diff": {
+              "path": "root.Mul[0].Pow[1]",
+              "before": "2",
+              "after": "-2",
+              "beforeLatex": "2",
+              "afterLatex": "-2"
+            },
+            "trace": [
+              {
+                "ruleId": "Z02",
+                "before": "ZT(x(n - 2), n, z)",
+                "after": "X(z)/z^2",
+                "beforeLatex": "\\mathcal{Z}\\!\\left\\{x\\left[n - 2\\right]\\right\\}\\!\\left(z\\right)",
+                "afterLatex": "\\frac{X\\left(z\\right)}{z^{2}}"
+              }
+            ],
+            "samples": [
+              {
+                "at": "z=16/3 + I/3",
+                "expected": "(0.038293463495498815-0.0050560633619598j)",
+                "actual": "(31.275739644970415+3.720447074293228j)",
+                "error": 31.458820981868033,
+                "difference": "(-31.237446181474915-3.725503137655188j)"
+              }
+            ],
+            "inherited": false,
+            "status": "wrong",
+            "explanation": "序列延迟对应 z 的负次幂，请核对移位方向。",
+            "beforeLatex": "\\mathcal{Z}\\!\\left\\{x\\left[n - 2\\right]\\right\\}\\!\\left(z\\right)",
+            "afterLatex": "z^{2} X\\left(z\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\frac{X\\left(z\\right)}{z^{2}}",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "wrong",
+            "statusLabel": "已确认错误"
+          },
+          {
+            "before": "z^2*X(z)",
+            "after": "z^3/(z-1/2)",
+            "expected": "z^3/(z-1/2)",
+            "ruleIds": [
+              "ALG"
+            ],
+            "ruleNames": [
+              "代数化简 / 已知变换对代入"
+            ],
+            "conditions": [],
+            "evidence": [
+              "符号差值化简为 0"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": true,
+            "status": "correct",
+            "explanation": "相邻两式在给定条件下符号等价。",
+            "beforeLatex": "z^{2} X\\left(z\\right)",
+            "afterLatex": "\\frac{z^{3}}{z - \\frac{1}{2}}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\frac{z^{3}}{z - \\frac{1}{2}}",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "correct",
+            "statusLabel": "局部正确 · 继承前错"
+          }
+        ],
+        "normalized": [
+          "ZT(x(n - 2), n, z)",
+          "2*z^3/(2*z - 1)",
+          "2*z^3/(2*z - 1)"
+        ],
+        "ast": [
+          "ZT\n  x\n    Add\n      n\n      -2\n  n\n  z",
+          "Mul\n  Pow\n    z\n    2\n  X\n    z",
+          "Mul\n  Pow\n    z\n    3\n  Pow\n    Add\n      z\n      Mul\n        -1\n        Pow\n          2\n          -1\n    -1"
+        ],
+        "latex": [
+          "\\mathcal{Z}\\!\\left\\{x\\left[n - 2\\right]\\right\\}\\!\\left(z\\right)",
+          "z^{2} X\\left(z\\right)",
+          "\\frac{z^{3}}{z - \\frac{1}{2}}"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "ZT(x(n-2),n,z)",
+          "X(z)/z^2",
+          "z^3/(z-1/2)"
+        ]
+      }
+    },
+    {
+      "id": "z-reversal",
+      "expected": "wrong",
+      "expectedFirstError": 2,
+      "actual": "wrong",
+      "actualFirstError": 2,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "localStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "result": {
+        "status": "wrong",
+        "summary": "第 1 → 2 行出现首个错误",
+        "firstError": 2,
+        "firstErrorCertain": true,
+        "elapsedMs": 176.77,
+        "steps": [
+          {
+            "before": "ZT(x(-n),n,z)",
+            "after": "X(-z)",
+            "expected": "X(1/z)",
+            "ruleIds": [
+              "Z03"
+            ],
+            "ruleNames": [
+              "序列反转"
+            ],
+            "conditions": [],
+            "evidence": [
+              "规则产生正确候选",
+              "发现可复核的函数/数值反例"
+            ],
+            "diff": {
+              "path": "root.X[0]",
+              "before": "-z",
+              "after": "1/z",
+              "beforeLatex": "- z",
+              "afterLatex": "\\frac{1}{z}"
+            },
+            "trace": [
+              {
+                "ruleId": "Z03",
+                "before": "ZT(x(-n), n, z)",
+                "after": "X(1/z)",
+                "beforeLatex": "\\mathcal{Z}\\!\\left\\{x\\left[- n\\right]\\right\\}\\!\\left(z\\right)",
+                "afterLatex": "X\\left(\\frac{1}{z}\\right)"
+              }
+            ],
+            "samples": [
+              {
+                "at": "z=16/3 + I/3",
+                "expected": "(-0.594059405940594+0.0594059405940594j)",
+                "actual": "(0.9145646867371847+0.004882017900732303j)",
+                "error": 1.5096090590459899,
+                "difference": "(-1.5086240926777787+0.054523922693327107j)"
+              }
+            ],
+            "inherited": false,
+            "status": "wrong",
+            "explanation": "该步与已验证的规则候选不一致。下方显示局部结构差异与建议结果。",
+            "beforeLatex": "\\mathcal{Z}\\!\\left\\{x\\left[- n\\right]\\right\\}\\!\\left(z\\right)",
+            "afterLatex": "X\\left(- z\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "X\\left(\\frac{1}{z}\\right)",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "wrong",
+            "statusLabel": "已确认错误"
+          },
+          {
+            "before": "X(-z)",
+            "after": "(-z)/(-z-1/2)",
+            "expected": "(-z)/(-z-1/2)",
+            "ruleIds": [
+              "ALG"
+            ],
+            "ruleNames": [
+              "代数化简 / 已知变换对代入"
+            ],
+            "conditions": [],
+            "evidence": [
+              "符号差值化简为 0"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": true,
+            "status": "correct",
+            "explanation": "相邻两式在给定条件下符号等价。",
+            "beforeLatex": "X\\left(- z\\right)",
+            "afterLatex": "\\frac{\\left(-1\\right) z}{- z - \\frac{1}{2}}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\frac{\\left(-1\\right) z}{- z - \\frac{1}{2}}",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "correct",
+            "statusLabel": "局部正确 · 继承前错"
+          }
+        ],
+        "normalized": [
+          "ZT(x(-n), n, z)",
+          "2*z/(2*z + 1)",
+          "2*z/(2*z + 1)"
+        ],
+        "ast": [
+          "ZT\n  x\n    Mul\n      -1\n      n\n  n\n  z",
+          "X\n  Mul\n    -1\n    z",
+          "Mul\n  Mul\n    -1\n    z\n  Pow\n    Add\n      Mul\n        -1\n        z\n      Mul\n        -1\n        Pow\n          2\n          -1\n    -1"
+        ],
+        "latex": [
+          "\\mathcal{Z}\\!\\left\\{x\\left[- n\\right]\\right\\}\\!\\left(z\\right)",
+          "X\\left(- z\\right)",
+          "\\frac{\\left(-1\\right) z}{- z - \\frac{1}{2}}"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "ZT(x(-n),n,z)",
+          "X(1/z)",
+          "(-z)/(-z-1/2)"
+        ]
+      }
+    },
+    {
+      "id": "z-exponential",
+      "expected": "correct",
+      "expectedFirstError": null,
+      "actual": "correct",
+      "actualFirstError": null,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "correct",
+        "correct"
+      ],
+      "localStatuses": [
+        "correct",
+        "correct"
+      ],
+      "result": {
+        "status": "correct",
+        "summary": "全部相邻步骤已通过验证。",
+        "firstError": null,
+        "firstErrorCertain": true,
+        "elapsedMs": 151.65,
+        "steps": [
+          {
+            "before": "ZT(2^n*x(n),n,z)",
+            "after": "X(z/2)",
+            "expected": "X(z/2)",
+            "ruleIds": [
+              "Z04"
+            ],
+            "ruleNames": [
+              "指数序列乘积"
+            ],
+            "conditions": [],
+            "evidence": [
+              "已执行 1 次规则重写",
+              "候选与目标的符号差值为 0"
+            ],
+            "diff": {},
+            "trace": [
+              {
+                "ruleId": "Z04",
+                "before": "ZT(2^n*x(n), n, z)",
+                "after": "X(z/2)",
+                "beforeLatex": "\\mathcal{Z}\\!\\left\\{2^{n} x\\left[n\\right]\\right\\}\\!\\left(z\\right)",
+                "afterLatex": "X\\left(\\frac{z}{2}\\right)"
+              }
+            ],
+            "samples": [],
+            "inherited": false,
+            "status": "correct",
+            "explanation": "规则重写链与目标表达式符号一致。",
+            "beforeLatex": "\\mathcal{Z}\\!\\left\\{2^{n} x\\left[n\\right]\\right\\}\\!\\left(z\\right)",
+            "afterLatex": "X\\left(\\frac{z}{2}\\right)",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "X\\left(\\frac{z}{2}\\right)",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "correct",
+            "statusLabel": "已验证正确"
+          },
+          {
+            "before": "X(z/2)",
+            "after": "z/(z-1)",
+            "expected": "z/(z-1)",
+            "ruleIds": [
+              "ALG"
+            ],
+            "ruleNames": [
+              "代数化简 / 已知变换对代入"
+            ],
+            "conditions": [],
+            "evidence": [
+              "符号差值化简为 0"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": false,
+            "status": "correct",
+            "explanation": "相邻两式在给定条件下符号等价。",
+            "beforeLatex": "X\\left(\\frac{z}{2}\\right)",
+            "afterLatex": "\\frac{z}{z - 1}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\frac{z}{z - 1}",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "correct",
+            "statusLabel": "已验证正确"
+          }
+        ],
+        "normalized": [
+          "ZT(2^n*x(n), n, z)",
+          "z/(z - 1)",
+          "z/(z - 1)"
+        ],
+        "ast": [
+          "ZT\n  Mul\n    Pow\n      2\n      n\n    x\n      n\n  n\n  z",
+          "X\n  Mul\n    z\n    Pow\n      2\n      -1",
+          "Mul\n  z\n  Pow\n    Add\n      z\n      -1\n    -1"
+        ],
+        "latex": [
+          "\\mathcal{Z}\\!\\left\\{2^{n} x\\left[n\\right]\\right\\}\\!\\left(z\\right)",
+          "X\\left(\\frac{z}{2}\\right)",
+          "\\frac{z}{z - 1}"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "ZT(2^n*x(n),n,z)",
+          "X(z/2)",
+          "z/(z-1)"
+        ]
+      }
+    },
+    {
+      "id": "z-index",
+      "expected": "wrong",
+      "expectedFirstError": 2,
+      "actual": "wrong",
+      "actualFirstError": 2,
+      "passed": true,
+      "expectedLocalStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "localStatuses": [
+        "wrong",
+        "correct"
+      ],
+      "result": {
+        "status": "wrong",
+        "summary": "第 1 → 2 行出现首个错误",
+        "firstError": 2,
+        "firstErrorCertain": true,
+        "elapsedMs": 286.66,
+        "steps": [
+          {
+            "before": "ZT(n*x(n),n,z)",
+            "after": "z*D(X(z),z)",
+            "expected": "-z*D(X(z), z)",
+            "ruleIds": [
+              "Z05"
+            ],
+            "ruleNames": [
+              "乘以序号"
+            ],
+            "conditions": [],
+            "evidence": [
+              "规则产生正确候选",
+              "发现可复核的函数/数值反例"
+            ],
+            "diff": {
+              "path": "root",
+              "before": "z*Derivative(X(z), z)",
+              "after": "-z*Derivative(X(z), z)"
+            },
+            "trace": [
+              {
+                "ruleId": "Z05",
+                "before": "ZT(n*x(n), n, z)",
+                "after": "-z*D(X(z), z)",
+                "beforeLatex": "\\mathcal{Z}\\!\\left\\{n x\\left[n\\right]\\right\\}\\!\\left(z\\right)",
+                "afterLatex": "- z \\frac{\\mathrm{d} X\\left(z\\right)}{\\mathrm{d}z}"
+              }
+            ],
+            "samples": [
+              {
+                "at": "z=16/3 + I/3",
+                "expected": "(0.11350863065018732-0.008562725394769091j)",
+                "actual": "(-0.11350863065018732+0.008562725394769091j)",
+                "error": 0.22766228935216185,
+                "difference": "(0.22701726130037464-0.017125450789538182j)"
+              }
+            ],
+            "inherited": false,
+            "status": "wrong",
+            "explanation": "该步与已验证的规则候选不一致。下方显示局部结构差异与建议结果。",
+            "beforeLatex": "\\mathcal{Z}\\!\\left\\{n x\\left[n\\right]\\right\\}\\!\\left(z\\right)",
+            "afterLatex": "z \\frac{\\mathrm{d} X\\left(z\\right)}{\\mathrm{d}z}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "- z \\frac{\\mathrm{d} X\\left(z\\right)}{\\mathrm{d}z}",
+            "expectedRocLatex": "",
+            "line": 2,
+            "localStatus": "wrong",
+            "statusLabel": "已确认错误"
+          },
+          {
+            "before": "z*D(X(z),z)",
+            "after": "-z/(2*(z-1/2)^2)",
+            "expected": "-z/(2*(z-1/2)^2)",
+            "ruleIds": [
+              "ALG"
+            ],
+            "ruleNames": [
+              "代数化简 / 已知变换对代入"
+            ],
+            "conditions": [],
+            "evidence": [
+              "符号差值化简为 0"
+            ],
+            "diff": {},
+            "trace": [],
+            "samples": [],
+            "inherited": true,
+            "status": "correct",
+            "explanation": "相邻两式在给定条件下符号等价。",
+            "beforeLatex": "z \\frac{\\mathrm{d} X\\left(z\\right)}{\\mathrm{d}z}",
+            "afterLatex": "\\frac{\\left(-1\\right) z}{2 \\left(z - \\frac{1}{2}\\right)^{2}}",
+            "beforeRocLatex": "",
+            "afterRocLatex": "",
+            "expectedLatex": "\\frac{\\left(-1\\right) z}{2 \\left(z - \\frac{1}{2}\\right)^{2}}",
+            "expectedRocLatex": "",
+            "line": 3,
+            "localStatus": "correct",
+            "statusLabel": "局部正确 · 继承前错"
+          }
+        ],
+        "normalized": [
+          "ZT(n*x(n), n, z)",
+          "-2*z/(2*z - 1)^2",
+          "-2*z/(2*z - 1)^2"
+        ],
+        "ast": [
+          "ZT\n  Mul\n    n\n    x\n      n\n  n\n  z",
+          "Mul\n  z\n  D\n    X\n      z\n    z",
+          "Mul\n  Mul\n    -1\n    z\n  Pow\n    Mul\n      2\n      Pow\n        Add\n          z\n          Mul\n            -1\n            Pow\n              2\n              -1\n        2\n    -1"
+        ],
+        "latex": [
+          "\\mathcal{Z}\\!\\left\\{n x\\left[n\\right]\\right\\}\\!\\left(z\\right)",
+          "z \\frac{\\mathrm{d} X\\left(z\\right)}{\\mathrm{d}z}",
+          "\\frac{\\left(-1\\right) z}{2 \\left(z - \\frac{1}{2}\\right)^{2}}"
+        ],
+        "rocLatex": [
+          "",
+          "",
+          ""
+        ],
+        "formatVersion": "signal-latex-1",
+        "correction": [
+          "ZT(n*x(n),n,z)",
+          "-z*D(X(z), z)",
+          "-z/(2*(z-1/2)^2)"
+        ]
+      }
+    }
+  ],
+  "originalAcceptance": {
+    "total": 100,
+    "passed": 100,
+    "failed": 0,
+    "correctCount": 50,
+    "wrongCount": 50,
+    "elapsedMs": 10276.122,
+    "results": [
+      {
+        "id": "C01-OK",
+        "category": "卷积",
+        "title": "卷积交换律 · 正确",
+        "steps": [
+          "Conv(x(t),h(t),t)",
+          "Conv(h(t),x(t),t)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 9.7415,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C01-ERR",
+        "category": "卷积",
+        "title": "卷积交换律 · 错误",
+        "steps": [
+          "Conv(x(t),h(t),t)",
+          "x(t)*h(t)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 367.4505,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C02-OK",
+        "category": "卷积",
+        "title": "卷积结合律 · 正确",
+        "steps": [
+          "Conv(Conv(x(t),h(t),t),g(t),t)",
+          "Conv(x(t),Conv(h(t),g(t),t),t)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 76.5222,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C02-ERR",
+        "category": "卷积",
+        "title": "卷积结合律 · 错误",
+        "steps": [
+          "Conv(Conv(x(t),h(t),t),g(t),t)",
+          "Conv(x(t),h(t)*g(t),t)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 563.9208,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C03-OK",
+        "category": "卷积",
+        "title": "卷积分配律 · 正确",
+        "steps": [
+          "Conv(x(t),h(t)+g(t),t)",
+          "Conv(x(t),h(t),t)+Conv(x(t),g(t),t)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 37.8009,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C03-ERR",
+        "category": "卷积",
+        "title": "卷积分配律 · 错误",
+        "steps": [
+          "Conv(x(t),h(t)+g(t),t)",
+          "Conv(x(t),h(t),t)-Conv(x(t),g(t),t)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 415.4511,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C04-OK",
+        "category": "卷积",
+        "title": "卷积常数提出 · 正确",
+        "steps": [
+          "Conv(3*x(t),h(t),t)",
+          "3*Conv(x(t),h(t),t)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 21.2431,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C04-ERR",
+        "category": "卷积",
+        "title": "卷积常数提出 · 错误",
+        "steps": [
+          "Conv(3*x(t),h(t),t)",
+          "Conv(x(t),h(t),t)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 126.5569,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C05-OK",
+        "category": "卷积",
+        "title": "单位冲激恒等 · 正确",
+        "steps": [
+          "Conv(x(t),delta(t),t)",
+          "x(t)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 8.4628,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C05-ERR",
+        "category": "卷积",
+        "title": "单位冲激恒等 · 错误",
+        "steps": [
+          "Conv(x(t),delta(t),t)",
+          "x(t)+1"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 20.3123,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C06-OK",
+        "category": "卷积",
+        "title": "冲激延迟 · 正确",
+        "steps": [
+          "Conv(x(t),delta(t-2),t)",
+          "x(t-2)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 34.022,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C06-ERR",
+        "category": "卷积",
+        "title": "冲激延迟 · 错误",
+        "steps": [
+          "Conv(x(t),delta(t-2),t)",
+          "x(t+2)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 186.8158,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C07-OK",
+        "category": "卷积",
+        "title": "零信号卷积 · 正确",
+        "steps": [
+          "Conv(x(t),0,t)",
+          "0"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 3.5325,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C07-ERR",
+        "category": "卷积",
+        "title": "零信号卷积 · 错误",
+        "steps": [
+          "Conv(x(t),0,t)",
+          "x(t)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 38.2919,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C08-OK",
+        "category": "卷积",
+        "title": "卷积微分不重复求和 · 正确",
+        "steps": [
+          "D(Conv(x(t),h(t),t),t)",
+          "Conv(D(x(t),t),h(t),t)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 55.2337,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C08-ERR",
+        "category": "卷积",
+        "title": "卷积微分不重复求和 · 错误",
+        "steps": [
+          "D(Conv(x(t),h(t),t),t)",
+          "Conv(D(x(t),t),h(t),t)+Conv(x(t),D(h(t),t),t)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 443.3156,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C09-OK",
+        "category": "卷积",
+        "title": "离散冲激延迟 · 正确",
+        "steps": [
+          "Conv(x(n),delta(n-3),n)",
+          "x(n-3)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 42.1033,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C09-ERR",
+        "category": "卷积",
+        "title": "离散冲激延迟 · 错误",
+        "steps": [
+          "Conv(x(n),delta(n-3),n)",
+          "x(n+3)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 151.5166,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C10-OK",
+        "category": "卷积",
+        "title": "两级冲激移位与错误传播 · 正确",
+        "steps": [
+          "Conv(Conv(x(t),delta(t-2),t),delta(t-3),t)",
+          "Conv(x(t-2),delta(t-3),t)",
+          "x(t-5)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct",
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct",
+          "correct"
+        ],
+        "elapsedMs": 117.6801,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "C10-ERR",
+        "category": "卷积",
+        "title": "两级冲激移位与错误传播 · 错误",
+        "steps": [
+          "Conv(Conv(x(t),delta(t-2),t),delta(t-3),t)",
+          "Conv(x(t+2),delta(t-3),t)",
+          "x(t-1)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong",
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "wrong",
+          "correct"
+        ],
+        "elapsedMs": 283.4908,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F01-OK",
+        "category": "傅里叶",
+        "title": "傅里叶线性系数 · 正确",
+        "steps": [
+          "FT(2*x(t)+3*h(t),t,w)",
+          "2*X(w)+3*H(w)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 67.5078,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F01-ERR",
+        "category": "傅里叶",
+        "title": "傅里叶线性系数 · 错误",
+        "steps": [
+          "FT(2*x(t)+3*h(t),t,w)",
+          "2*X(w)+H(w)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 229.9829,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F02-OK",
+        "category": "傅里叶",
+        "title": "时移相位方向 · 正确",
+        "steps": [
+          "FT(x(t-2),t,w)",
+          "exp(-2*I*w)*X(w)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 75.8275,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F02-ERR",
+        "category": "傅里叶",
+        "title": "时移相位方向 · 错误",
+        "steps": [
+          "FT(x(t-2),t,w)",
+          "exp(2*I*w)*X(w)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 234.9923,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F03-OK",
+        "category": "傅里叶",
+        "title": "调制频移方向 · 正确",
+        "steps": [
+          "FT(exp(3*I*t)*x(t),t,w)",
+          "X(w-3)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 52.3942,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F03-ERR",
+        "category": "傅里叶",
+        "title": "调制频移方向 · 错误",
+        "steps": [
+          "FT(exp(3*I*t)*x(t),t,w)",
+          "X(w+3)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 165.5738,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F04-OK",
+        "category": "傅里叶",
+        "title": "负尺度绝对值 · 正确",
+        "steps": [
+          "FT(x(-2*t),t,w)",
+          "X(-w/2)/2"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 37.2552,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F04-ERR",
+        "category": "傅里叶",
+        "title": "负尺度绝对值 · 错误",
+        "steps": [
+          "FT(x(-2*t),t,w)",
+          "-X(-w/2)/2"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 96.7701,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F05-OK",
+        "category": "傅里叶",
+        "title": "共轭与频率反转 · 正确",
+        "steps": [
+          "FT(conjugate(x(t)),t,w)",
+          "conjugate(X(-w))"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 18.7638,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F05-ERR",
+        "category": "傅里叶",
+        "title": "共轭与频率反转 · 错误",
+        "steps": [
+          "FT(conjugate(x(t)),t,w)",
+          "conjugate(X(w))"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 116.0286,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F06-OK",
+        "category": "傅里叶",
+        "title": "时域微分的虚数因子 · 正确",
+        "steps": [
+          "FT(D(x(t),t),t,w)",
+          "I*w*X(w)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 28.8654,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F06-ERR",
+        "category": "傅里叶",
+        "title": "时域微分的虚数因子 · 错误",
+        "steps": [
+          "FT(D(x(t),t),t,w)",
+          "w*X(w)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 79.8576,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F07-OK",
+        "category": "傅里叶",
+        "title": "时间相乘与频域微分 · 正确",
+        "steps": [
+          "FT(t*x(t),t,w)",
+          "I*D(X(w),w)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 22.7308,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F07-ERR",
+        "category": "傅里叶",
+        "title": "时间相乘与频域微分 · 错误",
+        "steps": [
+          "FT(t*x(t),t,w)",
+          "-I*D(X(w),w)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 152.1331,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F08-OK",
+        "category": "傅里叶",
+        "title": "时域卷积定理 · 正确",
+        "steps": [
+          "FT(Conv(x(t),h(t),t),t,w)",
+          "X(w)*H(w)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 19.0616,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F08-ERR",
+        "category": "傅里叶",
+        "title": "时域卷积定理 · 错误",
+        "steps": [
+          "FT(Conv(x(t),h(t),t),t,w)",
+          "X(w)+H(w)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 219.8652,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F09-OK",
+        "category": "傅里叶",
+        "title": "乘积定理归一化 · 正确",
+        "steps": [
+          "FT(x(t)*h(t),t,w)",
+          "Conv(X(w),H(w),w)/(2*pi)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 49.9816,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F09-ERR",
+        "category": "傅里叶",
+        "title": "乘积定理归一化 · 错误",
+        "steps": [
+          "FT(x(t)*h(t),t,w)",
+          "Conv(X(w),H(w),w)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 231.2071,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F10-OK",
+        "category": "傅里叶",
+        "title": "冲激变换 · 正确",
+        "steps": [
+          "FT(delta(t),t,w)",
+          "1"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 5.2242,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F10-ERR",
+        "category": "傅里叶",
+        "title": "冲激变换 · 错误",
+        "steps": [
+          "FT(delta(t),t,w)",
+          "0"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 1.7505,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F11-OK",
+        "category": "傅里叶",
+        "title": "因果衰减指数 · 正确",
+        "steps": [
+          "FT(exp(-2*t)*u(t),t,w)",
+          "1/(2+I*w)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 179.0005,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F11-ERR",
+        "category": "傅里叶",
+        "title": "因果衰减指数 · 错误",
+        "steps": [
+          "FT(exp(-2*t)*u(t),t,w)",
+          "1/(2-I*w)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 140.1681,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F12-OK",
+        "category": "傅里叶",
+        "title": "高斯变换系数 · 正确",
+        "steps": [
+          "FT(exp(-2*t^2),t,w)",
+          "sqrt(pi/2)*exp(-w^2/8)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 77.6032,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F12-ERR",
+        "category": "傅里叶",
+        "title": "高斯变换系数 · 错误",
+        "steps": [
+          "FT(exp(-2*t^2),t,w)",
+          "sqrt(pi/2)*exp(-w^2/4)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 172.9174,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F13-OK",
+        "category": "傅里叶",
+        "title": "尺度与移位复合 · 正确",
+        "steps": [
+          "FT(x(2*(t-3)),t,w)",
+          "exp(-3*I*w)*X(w/2)/2"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 100.6535,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F13-ERR",
+        "category": "傅里叶",
+        "title": "尺度与移位复合 · 错误",
+        "steps": [
+          "FT(x(2*(t-3)),t,w)",
+          "exp(-6*I*w)*X(w/2)/2"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 343.5204,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F14-OK",
+        "category": "傅里叶",
+        "title": "四行推导末步代数错误 · 正确",
+        "steps": [
+          "FT(2*x(t-2),t,w)",
+          "2*exp(-2*I*w)*X(w)",
+          "2*X(w)/exp(2*I*w)",
+          "(X(w)+X(w))/exp(2*I*w)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct",
+          "correct",
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct",
+          "correct",
+          "correct"
+        ],
+        "elapsedMs": 131.8971,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "F14-ERR",
+        "category": "傅里叶",
+        "title": "四行推导末步代数错误 · 错误",
+        "steps": [
+          "FT(2*x(t-2),t,w)",
+          "2*exp(-2*I*w)*X(w)",
+          "2*X(w)/exp(2*I*w)",
+          "(X(w)-X(w))/exp(2*I*w)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 4,
+        "actual": "wrong",
+        "actualFirstError": 4,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct",
+          "correct",
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "correct",
+          "correct",
+          "wrong"
+        ],
+        "elapsedMs": 255.3456,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L01-OK",
+        "category": "拉普拉斯",
+        "title": "拉普拉斯线性 · 正确",
+        "steps": [
+          "LT(2*x(t)+3*h(t),t,s)",
+          "2*X(s)+3*H(s)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 48.0096,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L01-ERR",
+        "category": "拉普拉斯",
+        "title": "拉普拉斯线性 · 错误",
+        "steps": [
+          "LT(2*x(t)+3*h(t),t,s)",
+          "2*X(s)+H(s)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 191.2676,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L02-OK",
+        "category": "拉普拉斯",
+        "title": "一阶导数非零初值 · 正确",
+        "steps": [
+          "LT(D(x(t),t),t,s)",
+          "s*X(s)-2"
+        ],
+        "context": {
+          "initial": {
+            "x0": 2,
+            "x1": 0
+          }
+        },
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 29.5171,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L02-ERR",
+        "category": "拉普拉斯",
+        "title": "一阶导数非零初值 · 错误",
+        "steps": [
+          "LT(D(x(t),t),t,s)",
+          "s*X(s)"
+        ],
+        "context": {
+          "initial": {
+            "x0": 2,
+            "x1": 0
+          }
+        },
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 36.2951,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L03-OK",
+        "category": "拉普拉斯",
+        "title": "二阶导数两个初值 · 正确",
+        "steps": [
+          "LT(D(x(t),t,2),t,s)",
+          "s^2*X(s)-2*s-3"
+        ],
+        "context": {
+          "initial": {
+            "x0": 2,
+            "x1": 3
+          }
+        },
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 42.3362,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L03-ERR",
+        "category": "拉普拉斯",
+        "title": "二阶导数两个初值 · 错误",
+        "steps": [
+          "LT(D(x(t),t,2),t,s)",
+          "s^2*X(s)-2*s+3"
+        ],
+        "context": {
+          "initial": {
+            "x0": 2,
+            "x1": 3
+          }
+        },
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 85.5089,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L04-OK",
+        "category": "拉普拉斯",
+        "title": "时间相乘的负号 · 正确",
+        "steps": [
+          "LT(t*x(t),t,s)",
+          "-D(X(s),s)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 26.3119,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L04-ERR",
+        "category": "拉普拉斯",
+        "title": "时间相乘的负号 · 错误",
+        "steps": [
+          "LT(t*x(t),t,s)",
+          "D(X(s),s)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 92.3341,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L05-OK",
+        "category": "拉普拉斯",
+        "title": "复频移方向 · 正确",
+        "steps": [
+          "LT(exp(2*t)*x(t),t,s)",
+          "X(s-2)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 63.0831,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L05-ERR",
+        "category": "拉普拉斯",
+        "title": "复频移方向 · 错误",
+        "steps": [
+          "LT(exp(2*t)*x(t),t,s)",
+          "X(s+2)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 216.3324,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L06-OK",
+        "category": "拉普拉斯",
+        "title": "因果延迟门控 · 正确",
+        "steps": [
+          "LT(u(t-3)*x(t-3),t,s)",
+          "exp(-3*s)*X(s)"
+        ],
+        "context": {
+          "causal": true
+        },
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 119.764,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L06-ERR",
+        "category": "拉普拉斯",
+        "title": "因果延迟门控 · 错误",
+        "steps": [
+          "LT(u(t-3)*x(t-3),t,s)",
+          "exp(3*s)*X(s)"
+        ],
+        "context": {
+          "causal": true
+        },
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 278.2639,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L07-OK",
+        "category": "拉普拉斯",
+        "title": "因果卷积定理 · 正确",
+        "steps": [
+          "LT(Conv(x(t),h(t),t),t,s)",
+          "X(s)*H(s)"
+        ],
+        "context": {
+          "causal": true
+        },
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 24.5545,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L07-ERR",
+        "category": "拉普拉斯",
+        "title": "因果卷积定理 · 错误",
+        "steps": [
+          "LT(Conv(x(t),h(t),t),t,s)",
+          "X(s)+H(s)"
+        ],
+        "context": {
+          "causal": true
+        },
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 224.021,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L08-OK",
+        "category": "拉普拉斯",
+        "title": "从零积分 · 正确",
+        "steps": [
+          "LT(Int0(x(t),t),t,s)",
+          "X(s)/s"
+        ],
+        "context": {
+          "causal": true
+        },
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 40.1288,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L08-ERR",
+        "category": "拉普拉斯",
+        "title": "从零积分 · 错误",
+        "steps": [
+          "LT(Int0(x(t),t),t,s)",
+          "s*X(s)"
+        ],
+        "context": {
+          "causal": true
+        },
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 108.4715,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L09-OK",
+        "category": "拉普拉斯",
+        "title": "单位阶跃及收敛域 · 正确",
+        "steps": [
+          "LT(u(t),t,s)",
+          "1/s; ROC: re(s)>0"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 13.9737,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L09-ERR",
+        "category": "拉普拉斯",
+        "title": "单位阶跃及收敛域 · 错误",
+        "steps": [
+          "LT(u(t),t,s)",
+          "-1/s; ROC: re(s)>0"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 31.8221,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L10-OK",
+        "category": "拉普拉斯",
+        "title": "衰减指数及收敛域 · 正确",
+        "steps": [
+          "LT(exp(-2*t)*u(t),t,s)",
+          "1/(s+2); ROC: re(s)>-2"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 71.683,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L10-ERR",
+        "category": "拉普拉斯",
+        "title": "衰减指数及收敛域 · 错误",
+        "steps": [
+          "LT(exp(-2*t)*u(t),t,s)",
+          "1/(s-2); ROC: re(s)>-2"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 134.0696,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L11-OK",
+        "category": "拉普拉斯",
+        "title": "零初值不能凭空增加项 · 正确",
+        "steps": [
+          "LT(D(x(t),t),t,s)",
+          "s*X(s)"
+        ],
+        "context": {
+          "initial": {
+            "x0": 0,
+            "x1": 0
+          }
+        },
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 16.91,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L11-ERR",
+        "category": "拉普拉斯",
+        "title": "零初值不能凭空增加项 · 错误",
+        "steps": [
+          "LT(D(x(t),t),t,s)",
+          "s*X(s)-1"
+        ],
+        "context": {
+          "initial": {
+            "x0": 0,
+            "x1": 0
+          }
+        },
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 44.9521,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L12-OK",
+        "category": "拉普拉斯",
+        "title": "初始速度无需额外乘s · 正确",
+        "steps": [
+          "LT(D(x(t),t,2),t,s)",
+          "s^2*X(s)-5"
+        ],
+        "context": {
+          "initial": {
+            "x0": 0,
+            "x1": 5
+          }
+        },
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 34.0335,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L12-ERR",
+        "category": "拉普拉斯",
+        "title": "初始速度无需额外乘s · 错误",
+        "steps": [
+          "LT(D(x(t),t,2),t,s)",
+          "s^2*X(s)-5*s"
+        ],
+        "context": {
+          "initial": {
+            "x0": 0,
+            "x1": 5
+          }
+        },
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 79.8723,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L13-OK",
+        "category": "拉普拉斯",
+        "title": "衰减指数收敛域方向 · 正确",
+        "steps": [
+          "LT(exp(-3*t)*u(t),t,s)",
+          "1/(s+3); ROC: re(s)>-3"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 87.9626,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L13-ERR",
+        "category": "拉普拉斯",
+        "title": "衰减指数收敛域方向 · 错误",
+        "steps": [
+          "LT(exp(-3*t)*u(t),t,s)",
+          "1/(s+3); ROC: re(s)<-3"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 48.4548,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L14-OK",
+        "category": "拉普拉斯",
+        "title": "变换后有理式等价 · 正确",
+        "steps": [
+          "LT(exp(-2*t)*u(t),t,s)",
+          "1/(s+2); ROC: re(s)>-2",
+          "(s+2)/(s+2)^2; ROC: re(s)>-2"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct",
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct",
+          "correct"
+        ],
+        "elapsedMs": 95.1481,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "L14-ERR",
+        "category": "拉普拉斯",
+        "title": "变换后有理式等价 · 错误",
+        "steps": [
+          "LT(exp(-2*t)*u(t),t,s)",
+          "1/(s+2); ROC: re(s)>-2",
+          "(s-2)/(s+2)^2; ROC: re(s)>-2"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 3,
+        "actual": "wrong",
+        "actualFirstError": 3,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct",
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "correct",
+          "wrong"
+        ],
+        "elapsedMs": 116.5558,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z01-OK",
+        "category": "Z变换",
+        "title": "Z变换线性 · 正确",
+        "steps": [
+          "ZT(2*x(n)+3*h(n),n,z)",
+          "2*X(z)+3*H(z)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 58.6937,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z01-ERR",
+        "category": "Z变换",
+        "title": "Z变换线性 · 错误",
+        "steps": [
+          "ZT(2*x(n)+3*h(n),n,z)",
+          "2*X(z)+H(z)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 151.2447,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z02-OK",
+        "category": "Z变换",
+        "title": "延迟指数方向 · 正确",
+        "steps": [
+          "ZT(x(n-2),n,z)",
+          "z^(-2)*X(z)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 38.892,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z02-ERR",
+        "category": "Z变换",
+        "title": "延迟指数方向 · 错误",
+        "steps": [
+          "ZT(x(n-2),n,z)",
+          "z^2*X(z)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 93.9779,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z03-OK",
+        "category": "Z变换",
+        "title": "时间反转 · 正确",
+        "steps": [
+          "ZT(x(-n),n,z)",
+          "X(1/z)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 20.1323,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z03-ERR",
+        "category": "Z变换",
+        "title": "时间反转 · 错误",
+        "steps": [
+          "ZT(x(-n),n,z)",
+          "X(-z)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 77.1386,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z04-OK",
+        "category": "Z变换",
+        "title": "指数加权尺度 · 正确",
+        "steps": [
+          "ZT(2^n*x(n),n,z)",
+          "X(z/2)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 24.9764,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z04-ERR",
+        "category": "Z变换",
+        "title": "指数加权尺度 · 错误",
+        "steps": [
+          "ZT(2^n*x(n),n,z)",
+          "X(2*z)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 72.7721,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z05-OK",
+        "category": "Z变换",
+        "title": "乘n对应微分 · 正确",
+        "steps": [
+          "ZT(n*x(n),n,z)",
+          "-z*D(X(z),z)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 25.1195,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z05-ERR",
+        "category": "Z变换",
+        "title": "乘n对应微分 · 错误",
+        "steps": [
+          "ZT(n*x(n),n,z)",
+          "z*D(X(z),z)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 72.7788,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z06-OK",
+        "category": "Z变换",
+        "title": "离散卷积定理 · 正确",
+        "steps": [
+          "ZT(Conv(x(n),h(n),n),n,z)",
+          "X(z)*H(z)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 23.0795,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z06-ERR",
+        "category": "Z变换",
+        "title": "离散卷积定理 · 错误",
+        "steps": [
+          "ZT(Conv(x(n),h(n),n),n,z)",
+          "X(z)+H(z)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 126.0597,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z07-OK",
+        "category": "Z变换",
+        "title": "序列共轭 · 正确",
+        "steps": [
+          "ZT(conjugate(x(n)),n,z)",
+          "conjugate(X(conjugate(z)))"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 57.6263,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z07-ERR",
+        "category": "Z变换",
+        "title": "序列共轭 · 错误",
+        "steps": [
+          "ZT(conjugate(x(n)),n,z)",
+          "conjugate(X(z))"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 73.6154,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z08-OK",
+        "category": "Z变换",
+        "title": "单位序列冲激 · 正确",
+        "steps": [
+          "ZT(delta(n),n,z)",
+          "1"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 4.7573,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z08-ERR",
+        "category": "Z变换",
+        "title": "单位序列冲激 · 错误",
+        "steps": [
+          "ZT(delta(n),n,z)",
+          "z"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 14.8837,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z09-OK",
+        "category": "Z变换",
+        "title": "右边序列ROC · 正确",
+        "steps": [
+          "ZT((1/2)^n*u(n),n,z)",
+          "z/(z-1/2); ROC: abs(z)>1/2"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 99.4268,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z09-ERR",
+        "category": "Z变换",
+        "title": "右边序列ROC · 错误",
+        "steps": [
+          "ZT((1/2)^n*u(n),n,z)",
+          "z/(z-1/2); ROC: abs(z)<1/2"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 48.8403,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z10-OK",
+        "category": "Z变换",
+        "title": "左边序列符号和ROC · 正确",
+        "steps": [
+          "ZT(-2^n*u(-n-1),n,z)",
+          "z/(z-2); ROC: abs(z)<2"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 110.8298,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z10-ERR",
+        "category": "Z变换",
+        "title": "左边序列符号和ROC · 错误",
+        "steps": [
+          "ZT(-2^n*u(-n-1),n,z)",
+          "-z/(z-2); ROC: abs(z)<2"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 138.8594,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z11-OK",
+        "category": "Z变换",
+        "title": "移位冲激序列 · 正确",
+        "steps": [
+          "ZT(delta(n-3),n,z)",
+          "z^(-3)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct"
+        ],
+        "elapsedMs": 28.5497,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z11-ERR",
+        "category": "Z变换",
+        "title": "移位冲激序列 · 错误",
+        "steps": [
+          "ZT(delta(n-3),n,z)",
+          "z^3"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 2,
+        "actual": "wrong",
+        "actualFirstError": 2,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "wrong"
+        ],
+        "elapsedMs": 44.8815,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z12-OK",
+        "category": "Z变换",
+        "title": "卷积变换后三行推导 · 正确",
+        "steps": [
+          "ZT(Conv(x(n),h(n),n),n,z)",
+          "X(z)*H(z)",
+          "H(z)*X(z)"
+        ],
+        "context": {},
+        "expected": "correct",
+        "expectedFirstError": null,
+        "actual": "correct",
+        "actualFirstError": null,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct",
+          "correct"
+        ],
+        "actualLocalStatuses": [
+          "correct",
+          "correct"
+        ],
+        "elapsedMs": 40.5081,
+        "measurementRepeat": 1
+      },
+      {
+        "id": "Z12-ERR",
+        "category": "Z变换",
+        "title": "卷积变换后三行推导 · 错误",
+        "steps": [
+          "ZT(Conv(x(n),h(n),n),n,z)",
+          "X(z)*H(z)",
+          "H(z)+X(z)"
+        ],
+        "context": {},
+        "expected": "wrong",
+        "expectedFirstError": 3,
+        "actual": "wrong",
+        "actualFirstError": 3,
+        "passed": true,
+        "error": "",
+        "inputRejected": false,
+        "timedOut": false,
+        "expectedLocalStatuses": [
+          "correct",
+          "wrong"
+        ],
+        "actualLocalStatuses": [
+          "correct",
+          "wrong"
+        ],
+        "elapsedMs": 116.4977,
+        "measurementRepeat": 1
+      }
+    ],
+    "generatedAt": "2026-10-02T09:30:18.022023+00:00",
+    "measurementGeneratedAt": "2026-10-02T09:24:46.560723+00:00",
+    "runner": "Native Python; compatibility view of the first measured baseline repetition. This is not a browser measurement.",
+    "benchmarkReport": "benchmark-results.json",
+    "benchmarkSha256": "b838eb8cc91c12c68272ec65c2b8a6d76d20a6d004783b8c7d878d43d052bf0a",
+    "source": {
+      "sha256": "dbe21f2dd12e9b153a5f626f8ebc05ac0ce5da258b92195f17a9c8ee7f9d29c6",
+      "files": {
+        "engine/__init__.py": "ce86c25dbdb319c19f63a659915fbd4bf58d502a6dcfb03136105655cffc1218",
+        "engine/__main__.py": "e7845150431eefe9440880e3b82b2faea1b10ccdfe05cde426c246fd94975ad1",
+        "engine/diagnostics.py": "4dd81734a0c228d3d06b444bb61fb54c4bbc599a661e196de0ef6cde19b56681",
+        "engine/formatting.py": "aef72a566712a21db058574752a00b4ad936ca024bd6a4f87a3a4fc761570205",
+        "engine/rules.py": "08493d035d65af61694d3fd77901374235aa6d44cffb7b7e94a9f2c1647bd4df",
+        "engine/service.py": "05bcd2c0d214ce436571e8e202af64006695b5a376a4cc784fe3c2b8389e4597",
+        "engine/syntax.py": "36850a6f6e33d52297fd4d6b7942eebafcb302d092f2e53fee717587d7318a1e",
+        "engine/verification.py": "46a924129d11f0169a3f501abf707e27a5e55922ffc408d4cb7e9bd0ccefc298"
+      },
+      "unchangedDuringRun": true
+    },
+    "datasetSha256": "c57d81e719641e110fd9a60aa58754dc9085ed99b9a6d2864c384a29e703cf86",
+    "oracleSha256": "05f1190c27368eb8f6888ddfdebc647472ff032abf778a4c15ab29aee5dc65a7",
+    "environment": {
+      "python": "3.12.14",
+      "implementation": "CPython",
+      "sympy": "1.13.3",
+      "os": "Windows",
+      "osRelease": "11",
+      "machine": "AMD64",
+      "cpu": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+      "logicalCpus": 22
+    },
+    "elapsedDefinition": "Sum of completed first-repetition verify() kernel latencies; excludes imports, process start, warm-up, IPC, browser/WASM load and network. Not total browser or end-to-end duration.",
+    "metrics": {
+      "stepAccuracy": {
+        "correct": 110,
+        "total": 110,
+        "rate": 1.0
+      },
+      "chainAccuracy": {
+        "correct": 100,
+        "total": 100,
+        "rate": 1.0
+      },
+      "firstErrorOnWrong": {
+        "correct": 50,
+        "total": 50,
+        "rate": 1.0
+      },
+      "firstErrorIncludingNone": {
+        "correct": 100,
+        "total": 100,
+        "rate": 1.0
+      },
+      "exactCaseAccuracy": {
+        "correct": 100,
+        "total": 100,
+        "rate": 1.0
+      }
+    }
+  },
+  "benchmarkReport": "benchmark-results.json",
+  "benchmarkSha256": "b838eb8cc91c12c68272ec65c2b8a6d76d20a6d004783b8c7d878d43d052bf0a"
+}
