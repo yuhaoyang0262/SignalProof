@@ -51,6 +51,17 @@ const output=process.env.UI_ARTIFACT_DIR||path.resolve(__dirname,'../build/navig
  await page.locator('.mac-dock [data-route="tests"]').hover();
  assert(parseFloat(await page.locator('.mac-dock [data-route="tests"]').evaluate(e=>e.style.getPropertyValue('--zoom')))>1.3);
  assert(parseFloat(await page.locator('.mac-dock [data-route="cases"]').evaluate(e=>e.style.getPropertyValue('--zoom')))>1);
+ // Magnified icon bounds must stay separated, including narrow desktop windows.
+ for(const width of [1440,768,390,320]){
+  await page.setViewportSize({width,height:900});
+  for(const id of ['home','verify','cases','tests','transforms','rules']){
+   await page.locator(`.mac-dock [data-route="${id}"]`).hover();
+   await page.waitForTimeout(300);
+   const gaps=await page.locator('.mac-dock-icon').evaluateAll(es=>es.slice(1).map((e,i)=>e.getBoundingClientRect().left-es[i].getBoundingClientRect().right));
+   assert(gaps.every(g=>g>=8),`Dock overlap / insufficient gap at ${width}px on ${id}: ${gaps}`);
+  }
+ }
+
  for(const width of [390,768,1024]){
   await page.setViewportSize({width,height:900});
   for(const id of ['tests','transforms','verify']){

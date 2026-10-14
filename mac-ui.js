@@ -120,7 +120,7 @@
   const dock=document.createElement('nav');dock.className='mac-dock';dock.setAttribute('aria-label','快捷停靠栏');
   dock.innerHTML=entries.map(e=>`<a href="${url(e.id)}" class="mac-dock-item" data-route="${e.id}" aria-label="${e.title}"><span class="mac-dock-tooltip">${e.title}</span><span class="mac-dock-icon mac-icon-${e.id}">${icon(e.id)}</span><span class="mac-dock-dot" aria-hidden="true"></span></a>`).join('');document.body.append(dock);
   const dockItems=[...dock.children];
-  function magnify(index) {dockItems.forEach((item,i)=>item.style.setProperty('--zoom',index<0?'1':String(Math.max(1,1.42-Math.abs(i-index)*.24))));}
+  function magnify(index) {const compact=innerWidth<=520,peak=compact?1.22:1.36,falloff=compact?.12:.20;dockItems.forEach((item,i)=>item.style.setProperty('--zoom',index<0?'1':String(Math.max(1,peak-Math.abs(i-index)*falloff))));}
   dockItems.forEach((item,i)=>{
     item.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')magnify(i);});
     item.addEventListener('focus',()=>magnify(i));
