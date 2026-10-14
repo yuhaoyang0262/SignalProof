@@ -51,6 +51,7 @@ const output=process.env.UI_ARTIFACT_DIR||path.resolve(__dirname,'../build/navig
  await page.locator('.mac-dock [data-route="tests"]').hover();
  assert(parseFloat(await page.locator('.mac-dock [data-route="tests"]').evaluate(e=>e.style.getPropertyValue('--zoom')))>1.3);
  assert(parseFloat(await page.locator('.mac-dock [data-route="cases"]').evaluate(e=>e.style.getPropertyValue('--zoom')))>1);
+ await page.locator('.mac-dock').screenshot({animations:'disabled',path:path.join(output,'signalproof-dock-hover.png')});
  // Magnified icon bounds must stay separated, including narrow desktop windows.
  for(const width of [1440,768,390,320]){
   await page.setViewportSize({width,height:900});

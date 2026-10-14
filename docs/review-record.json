@@ -113,6 +113,15 @@
       "correctiveIteration": "修复鼠标悬停后点击导致菜单立即关闭的问题；增加折叠高度动画和中途切换取消；数值徽标改为前后数字上下滚动；移除首页不需要的题库元数据请求，保持首页轻量；复查触屏、侧栏动画最终状态、手机布局及减少动态效果。",
       "evidence": "50项Python回归通过，1150项严格公式渲染与原题库DOM适配器测试通过。tools/check_navigation.cjs真实Chrome测试通过：顶部面板跨项保持打开、单组侧栏、Dock相邻放大、命令过滤/高亮/方向键/回车/Esc/焦点约束/空结果、徽标访问持久化、触屏点击、减少动态效果。390/768/1024/1440px布局无横向溢出。实际Worker首错第2行，应用建议后推进至第3行，3行编辑预览公式正常，无pageerror。已目视检查首页、工作台、下拉菜单、命令面板和手机截图。flow.js、home.css、app.js、worker.js与前一提交逐字节一致；核心和题库未修改。",
       "remaining": "真实浏览器检查使用本机Chrome及其触屏模拟，未声称完成Safari或实体iPhone测试；推送后核对Pages部署和公开资源。"
+    },
+    {
+      "title": "Dock spacing and muted interface palette",
+      "date": "2026-10-14",
+      "finding": "User reported bright Dock colors and overlapping magnified icons. Previous 46px icons could exceed their reserved spacing at 1.42x magnification.",
+      "change": "Desktop Dock gap increased from 8px to 20px, item width from 48px to 54px, with larger inner padding. Desktop peak scale is 1.36; compact peak is 1.22. Mobile keeps 14px gaps; 320px layout reduces icon size. Applied muted slate, lavender, sand and sage across icons, primary buttons, selected states, command palette and status colors. Bumped CSS and JS cache versions.",
+      "correctiveIteration": "Added real bounding-box assertions for every magnified icon. The initial 320px test exposed a gap under 8px; adjusted compact padding, gap and item sizing until all widths passed. Preserved semantic states and text contrast.",
+      "evidence": "50 Python tests passed. Real Chrome navigation suite passed, including Worker initialization, first-error diagnosis, repair/recheck, formula rendering, command palette, touch, storage persistence and responsive layouts. Every adjacent Dock icon retains at least 8px of space while hovering each of six items at 1440/768/390/320px. Visually reviewed the muted homepage. flow.js, home.css, app.js and worker.js remain byte-for-byte unchanged.",
+      "remaining": "Verify public assets and GitHub Pages deployment after push; browser coverage is Chrome with touch emulation."
     }
   ],
   "verified": [
