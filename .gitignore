@@ -11,3 +11,6 @@ Thumbs.db
 .env.*
 !.env.example
 node_modules/
+# Local C# build output (never publish server credentials)
+**/bin/
+**/obj/

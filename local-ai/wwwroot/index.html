@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 助教 · SignalProof</title>
+  <link rel="stylesheet" href="katex/katex.min.css"><link rel="stylesheet" href="tutor.css">
+  <script defer src="katex/katex.min.js"></script><script defer src="tutor.js"></script>
+</head>
+<body>
+  <header class="toolbar"><a class="brand" href="https://yuhaoyang0262.github.io/SignalProof/" aria-label="返回 SignalProof 网站"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 15 5-8 4 13 5-17 4 10M2 12h4m12 0h4"/></svg>SignalProof</a><span class="toolbar-label">AI 助教</span><a class="back" href="https://yuhaoyang0262.github.io/SignalProof/">返回网站 ↗</a></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow"><span class="dot"></span>本地演示</p><h1>让每一步，都更清楚。</h1><p class="subtitle">选一道题，点一行推导。一起理解它为什么成立。</p></div><div class="connection"><span id="connection" role="status">正在连接本地服务…</span><small id="model">Astra · high</small></div></section>
+    <div id="load-error" class="notice" role="alert" hidden></div>
+    <div class="workspace">
+      <aside class="library panel" aria-label="题目列表"><div class="library-heading"><h2>题目资料库</h2><span id="count" class="count">—</span></div><label class="sr-only" for="search">搜索题目</label><input id="search" type="search" placeholder="搜索题名、编号…" autocomplete="off"><label class="sr-only" for="category">题目分类</label><select id="category"><option value="">所有分类</option></select><div id="questions" class="questions" aria-label="选择题目"></div><p class="library-foot">与 SignalProof 题库同步</p></aside>
+      <div class="study">
+        <section class="derivation panel" aria-labelledby="question-title"><div class="section-head"><div><p id="question-meta" class="eyebrow">信号与系统</p><h2 id="question-title">正在载入题目…</h2></div><span id="question-number" class="question-number"></span></div><div class="source-switch" role="group" aria-label="推导来源"><button type="button" data-source="attempt" aria-pressed="true">原推导</button><button type="button" data-source="reference" aria-pressed="false">参考推导</button></div><p id="source-note" class="source-note">原推导可能包含错误。选择想讨论的一行。</p><div id="given" class="given" hidden></div><div id="steps" class="steps" role="group" aria-label="选择推导步骤"></div><div class="actions"><span id="selection">选择一行推导</span><div><button id="hint" class="button secondary" disabled>给我提示</button><button id="explain" class="button primary" disabled>解释这一步 <span aria-hidden="true">↗</span></button></div></div></section>
+        <section class="conversation panel" aria-labelledby="answer-title" aria-busy="false"><div class="answer-heading"><div class="assistant-mark" aria-hidden="true">✦</div><div><h2 id="answer-title">一起想一想</h2><p id="answer-context">从一个小问题开始。</p></div><button id="cancel" class="button secondary" hidden>停止</button></div><div id="progress" class="progress" role="status" hidden><span class="thinking-dot"></span><span id="progress-text">正在思考…</span></div><div id="answer-error" class="notice" role="alert" hidden></div><div id="answer" class="answer"><p class="empty">选中上方推导，点击「解释这一步」。<br>想先自己试试？从一条提示开始。</p></div><p id="answer-meta" class="answer-meta" hidden></p><footer class="answer-foot">AI 解答供学习参考，数学结论请结合条件与验证结果核对。</footer></section>
+      </div>
+    </div>
+    <footer class="page-foot"><span>C# / ASP.NET Core · localhost:5080</span><span>本地页面 · 联网调用模型</span></footer>
+  </main>
+</body>
+</html>

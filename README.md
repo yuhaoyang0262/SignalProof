@@ -14,6 +14,12 @@
 
 [早期动效记录](docs/ui-flow-20261003.gif)
 
+## AI 助教 · 本地演示
+
+GitHub Pages 首页的 **AI 助教 · 本地演示** 按钮打开本机 `http://localhost:5080`。C# ASP.NET Core 同时提供页面和接口；复用 200 道题，支持选择推导行、解释这一步和渐进提示，默认使用 `gpt-6-astra` / `high`。
+
+安装 .NET 10 SDK，将 `local-ai/.env.example` 复制为 `local-ai/.env` 并填写 Key，然后在 macOS 双击 `start-ai.command`，Windows 双击 `start-ai.cmd`。本地配置不提交到 GitHub；模型调用需要联网。完整操作与检查方法见 [本地助教说明](local-ai/README.md)。
+
 ## 项目实现
 
 | 课程任务 | 对应实现 |
