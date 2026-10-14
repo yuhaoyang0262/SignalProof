@@ -131,6 +131,15 @@
       "correctiveIteration": "Baseline questions have reference LaTeX but no solutionSteps: use reference formulas instead of incorrectly falling back to the original derivation. Explicitly label oracle verdicts as applying to original steps. Use one 180-second deadline for headers and streaming body. Center homepage actions after desktop/mobile visual review.",
       "evidence": "C# build and publish succeeded; 1224 offline protocol/prompt/validation assertions passed. Provider model list includes gpt-6-astra. Direct C# and real Chrome calls both returned Astra high explanations for Q101 line 2 in about 13 seconds, identifying the cosine spectrum sign error. Browser checks passed: 200 questions, KaTeX, 1440/768/390/320 layouts, original/reference and selected line requests, hints, safe output, 429 error, cancellation and stale-response suppression. Local .env/source routes return 404 and cross-origin POST returns 403. All 50 Python regressions, 1150 strict LaTeX checks and question-bank DOM checks passed. Existing navigation suite passed including real Worker, first error 2, repair advancing to 3, Dock hover gaps, command palette and touch. Original flow.js, home.css, app.js and worker.js remain byte-for-byte unchanged.",
       "remaining": "Model output is learning assistance, not deterministic verification. Live sampling of one question does not establish correctness across 200 questions. Browser testing is local Chrome; Windows build is covered by CI. Verify Pages deployment and public assets after push."
+    },
+    {
+      "title": "Remove supplementary AI tutor interface copy",
+      "date": "2026-10-14",
+      "finding": "User requested removal of the extra gray instructional and model-related text introduced with the AI tutor.",
+      "change": "Removed homepage startup note; tutor subtitle, local/model readiness labels, source guidance, selection hint, empty-answer instructions, model/effort/timing/token metadata and technical/disclaimer footers. Answer panel now appears only after asking. Preserved question content, selection controls, short progress/error states and all existing site copy. Updated cache versions and existing browser checks to wait on actual answer content instead of removed metadata.",
+      "correctiveIteration": "Removed dependent DOM writes and the model-named loading timer along with markup, then checked cancellation and stale-answer handling. Deleted unused helper-copy styles.",
+      "evidence": "C# build passed. All 50 Python tests passed. Existing tutor browser checks passed for 200 questions, formulas, 1440/768/390/320 layouts, explain/hint request selection, errors and cancellation. Existing navigation checks passed, including real Worker, first error 2, repair advancing to 3, command palette and touch. Visually reviewed tutor and mobile homepage. Original animation and mathematical engine files unchanged.",
+      "remaining": "UI-only change; no new live model call required. Verify published assets after push."
     }
   ],
   "verified": [

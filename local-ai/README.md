@@ -9,7 +9,7 @@ ASP.NET Core 同时提供页面与 `/api/tutor`，仅监听本机 `localhost:508
 3. macOS 双击仓库根目录 `start-ai.command`；Windows 双击 `start-ai.cmd`。也可以在本目录运行 `dotnet run --project SignalProof.Tutor.csproj`。
 4. 浏览器打开 <http://localhost:5080>，或点击 GitHub Pages 的 **AI 助教 · 本地演示**。
 
-答辩建议先选「余弦的双边冲激谱」第 2 行，点击「解释这一步」；再切换参考推导。页面显示接口实际返回的模型、耗时及 token 用量（接口提供时）。没有配置 Key 时仍可浏览题目，但不能调用模型。
+答辩建议先选「余弦的双边冲激谱」第 2 行，点击「解释这一步」；再切换参考推导。页面仅显示解答，模型及调用信息保留在 API 响应中。没有配置 Key 时仍可浏览题目，但不能调用模型。
 
 `localhost` 始终是打开浏览器的那台电脑。换电脑演示需在那台电脑安装 SDK、配置 `.env` 并启动服务。模型调用需要联网；GitHub Pages 本身只提供入口，不运行 C#。关闭终端或按 Ctrl+C 停止服务。
 

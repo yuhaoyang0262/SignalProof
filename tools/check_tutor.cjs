@@ -31,11 +31,11 @@ const fs=require('node:fs');
   if(status.configured){
     let captured;
     await page.route('**/api/tutor',async route=>{captured=route.request().postDataJSON();await route.fulfill({json:{answer:'测试响应：\\(x(t)\\)\n<img src=x onerror=alert(1)>',model:'mock-only',reasoningEffort:'high',elapsedMs:12}});});
-    await page.locator('#explain').click();await page.waitForSelector('#answer-meta:not([hidden])');
+    await page.locator('#explain').click();await page.waitForFunction(()=>document.querySelector('#answer').textContent.length>0 && document.querySelector('.conversation').getAttribute('aria-busy')==='false');
     assert.deepEqual(captured,{questionId:'Q101',step:2,mode:'explain',source:'attempt'});
     assert.equal(await page.locator('#answer .katex').count(),1); assert.equal(await page.locator('#answer img').count(),0);
     assert((await page.locator('#answer').textContent()).includes('<img'));
-    await page.locator('#hint').click(); await page.waitForFunction(()=>document.querySelector('#answer-meta').hidden===false);
+    await page.locator('#hint').click(); await page.waitForFunction(()=>document.querySelector('#answer').textContent.length>0 && document.querySelector('.conversation').getAttribute('aria-busy')==='false');
     assert.equal(captured.mode,'hint');
     await page.unroute('**/api/tutor');
     await page.route('**/api/tutor',route=>route.fulfill({status:429,json:{error:'测试限流，请稍后重试。'}}));
@@ -53,9 +53,11 @@ const fs=require('node:fs');
     assert(!(await page.locator('#answer').textContent()).includes('过期响应'));await page.unroute('**/api/tutor');
     if(process.env.TUTOR_LIVE==='1'){
       await page.locator('[data-source="attempt"]').click();await page.locator('[data-step="2"]').click();
-      await page.locator('#explain').click(); await page.waitForSelector('#answer-meta:not([hidden]),#answer-error:not([hidden])',{timeout:240000});
+      const reply=page.waitForResponse(r=>r.url()===base+'/api/tutor',{timeout:240000});
+      await page.locator('#explain').click(); const result=await (await reply).json();
+      await page.waitForFunction(()=>document.querySelector('.conversation').getAttribute('aria-busy')==='false');
       assert(await page.locator('#answer-error').isHidden(),await page.locator('#answer-error').textContent());
-      assert((await page.locator('#answer-meta').textContent()).includes('gpt-6-astra'));
+      assert.equal(result.model,'gpt-6-astra');
       assert.equal(await page.locator('#answer .katex-error').count(),0);
       await page.screenshot({path:'build/tutor/live-answer.png',fullPage:true});
       console.log('Live Astra high explanation received through browser → C# → provider.');
